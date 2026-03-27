@@ -1,0 +1,178 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ========= HEADER ========= */
+.header {
+    background: 
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.06) 0 50%, transparent 51%) 0 0/6px 6px,
+        radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.05) 0 50%, transparent 51%) 0 0/7px 7px,
+        linear-gradient(#3a8255, #2c6946);
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.header-top {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.logo {
+    width: 220px;
+    height: auto;
+}
+
+/* ===== BUSCA ===== */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 6px 16px;
+    border-radius: 40px;
+    width: 350px;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 15px;
+}
+
+.search-bar button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* ===== ÍCONES ===== */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.icon-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* ===== MENU ===== */
+.menu {
+    margin-top: 25px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+.menu a {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    opacity: 0.7;
+}
+
+/* ========= SEÇÃO DE PLANOS ========= */
+.planos-section {
+    padding: 60px 40px;
+    background: #e9f5ee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    width: 260px;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2f7d48;
+}
+
+button {
+    background: #2f7d48;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #25663a;
+}
+
+
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    width: 350px;
+    height: 50px;              /* deixa mais fina */
+    padding: 0 14px;
+    border-radius: 40px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: #333;
+}
+
+.search-icon {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin-left: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
