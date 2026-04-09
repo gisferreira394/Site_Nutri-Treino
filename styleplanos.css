@@ -31,30 +31,6 @@ font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sa
     height: auto;
 }
 
-/* ===== BUSCA ===== */
-.search-bar {
-    display: flex;
-    align-items: center;
-    background: white;
-    padding: 6px 16px;
-    border-radius: 40px;
-    width: 350px;
-}
-
-.search-bar input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 8px;
-    font-size: 15px;
-}
-
-.search-bar button {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-}
-
 /* ===== ÍCONES ===== */
 .icons {
     display: flex;
@@ -88,9 +64,6 @@ font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sa
     text-decoration: none;
 }
 
-.menu a:hover {
-    opacity: 0.7;
-}
 
 /* ========= SEÇÃO DE PLANOS ========= */
 .planos-section {
@@ -144,9 +117,6 @@ button:hover {
     background: #25663a;
 }
 
-
-
-
 .search-bar {
     display: flex;
     align-items: center;
@@ -175,4 +145,6 @@ button:hover {
     display: flex;
     align-items: center;
 }
+
+
 
