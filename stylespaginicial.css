@@ -415,5 +415,19 @@ a{color:inherit;text-decoration:none}
     }
 }
 
+.botao {
+  background-color: #347553; /* Cor de fundo azul */
+  color: white;              /* Cor do texto branco */
+  border: none;              /* Remove a borda padrão */
+  padding: 10px 20px;        /* Espaçamento interno */
+  border-radius: 5px;        /* Bordas arredondadas */
+  cursor: pointer;           /* Cursor de "mãozinha" */
+}
+
+/* Efeito ao passar o mouse */
+.botao:hover {
+  background-color: #3f8b60; /* Fundo azul mais escuro no hover */
+}
+
 
 
