@@ -363,7 +363,7 @@ a{color:inherit;text-decoration:none}
     height: auto;
     border-radius: 6px;
 
-    /* garante direita MESMO se o container pai tentar centralizar */
+    /* garante direita MESMO se o container para tentar centralizar */
     justify-self: end;
 }
 
