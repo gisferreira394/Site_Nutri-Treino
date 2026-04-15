@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Treinos - Nutri&Treino</title>
   <link rel="stylesheet" href="styletreinos.css">
+
 </head>
 
 <body>
@@ -77,32 +78,51 @@
   <!-- BLOCO BRANCO DO PLANO DE TREINO -->
   <section class="treino-box">
 
-    <h1 class="title">Personalização de treinos</h1>
+    <h2 class="titulo">Personalização de treinos</h2>
 
-    <table class="treino-table">
-      <thead>
-        <tr>
-          <th>Segunda</th>
-          <th>Terça</th>
-          <th>Quarta</th>
-          <th>Quinta</th>
-          <th>Sexta</th>
-          <th>Sábado</th>
-          <th>Domingo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-          <td contenteditable="true"></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="treinos">
+
+  <div class="dia">
+    <div class="titulo-dia">Segunda</div>
+    <textarea id="segunda"></textarea>
+  </div>
+
+  <div class="dia">
+    <div class="titulo-dia">Terça</div>
+    <textarea id="terca"></textarea>
+  </div>
+
+  <div class="dia">
+    <div class="titulo-dia">Quarta</div>
+    <textarea id="quarta"></textarea>
+  </div>
+
+  <div class="dia">
+    <div class="titulo-dia">Quinta</div>
+    <textarea id="quinta"></textarea>
+  </div>
+
+  <div class="dia">
+    <div class="titulo-dia">Sexta</div>
+    <textarea id="sexta"></textarea>
+  </div>
+
+  <div class="dia">
+    <div class="titulo-dia">Sábado</div>
+    <textarea id="sabado"></textarea>
+  </div>
+
+  <div class="dia">
+    <div class="titulo-dia">Domingo</div>
+    <textarea id="domingo"></textarea>
+  </div>
+
+</div>
+
+<div class="botoes">
+<button class="salvar" onclick="salvarTreinos()">Salvar treinos</button>
+<button class="limpar" onclick="limparTreinos()">Limpar tudo</button>
+</div>
 
   </section>
 
@@ -146,6 +166,8 @@
   </div>
 
 </footer>
+
+<script src="treinos.js"></script>
 
 </body>
 </html>
