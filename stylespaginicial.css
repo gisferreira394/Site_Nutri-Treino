@@ -429,5 +429,10 @@ a{color:inherit;text-decoration:none}
   background-color: #3f8b60; /* Fundo azul mais escuro no hover */
 }
 
+.icone-cesta {
+  transform: rotate(180deg);
+  transform-origin: center;
+  display: block;
+}
 
 

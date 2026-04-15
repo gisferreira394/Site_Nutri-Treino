@@ -579,3 +579,8 @@ textarea:focus {
   background-color: #791107;
 }
 
+.icone-cesta {
+  transform: rotate(180deg);
+  transform-origin: center;
+  display: block;
+}

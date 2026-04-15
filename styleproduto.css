@@ -683,6 +683,11 @@ body {
  border-top: 25px solid rgba(255,255,255,0);
 }
 
+.icone-cesta {
+  transform: rotate(180deg);
+  transform-origin: center;
+  display: block;
+}
 
 /* ====== RODAPÉ ====== */
 

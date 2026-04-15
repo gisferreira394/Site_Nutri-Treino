@@ -79,6 +79,12 @@ a{color:inherit;text-decoration:none}
 }
 
 /* Ícones rápidos */
+.icone-cesta {
+  transform: rotate(180deg);
+  transform-origin: center;
+  display: block;
+}
+
 .quick-icons{
   display:flex;align-items:center;gap:12px;
 }
