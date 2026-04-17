@@ -519,15 +519,6 @@ background-color: #387856;
     border-top: 1px solid rgba(255,255,255,0.3);
 }
 
-/* CONTAINER GERAL */
-.container-geral {
-    display: flex;
-}
-
-/* CONTEÚDO PRINCIPAL */
-.conteudo {
-    width: 70%;
-}
 
 /* PAINEL ESCONDIDO */
 .painel {
