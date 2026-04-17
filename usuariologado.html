@@ -10,13 +10,21 @@
  <link rel="stylesheet" href="stylespaginicial.css">
 </head>
 <body>
-  <!-- ===== Header / Navbar ===== -->
-  <header class="site-header">
+
+<div class="container-geral">
+
+  <!-- ===== CONTEÚDO PRINCIPAL (SEU SITE) ===== -->
+  <div class="conteudo">
+
+    <!-- ===== Header / Navbar ===== -->
+    <header class="site-header">
     <div class="topbar container">
      
-       <a href="paginicial.html">
+       <a href="index.html">
     <img src="img/logonutri.png" alt="Logo" class="logo">
 </a>
+
+
 
       <form class="search">
         <input type="search" placeholder="Buscar" aria-label="Buscar" />
@@ -33,12 +41,12 @@
       <nav class="quick-icons" aria-label="Acesso rápido">
         
           <!-- ícone usuário -->
+        <a href="#" onclick="abrirPainel()"> 
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21a8 8 0 0 0-16 0"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
-          <span>Minha conta</span>
         </a>
         
           <!-- ícone sacola -->
@@ -156,5 +164,53 @@
     </div>
   </div>
 </footer>
+
+  <!-- ===== PAINEL LATERAL ===== -->
+    <div id="painel" class="painel">
+
+    <button class="fechar" onclick="fecharPainel()">✖</button>
+
+    <h2>Perfil</h2>
+
+    <div class="item">
+      <label>Nome</label>
+      <span>Guilherme</span>
+    </div>
+
+    <div class="item">
+      <label>Sexo</label>
+      <span>Masculino</span>
+    </div>
+
+    <div class="item">
+      <label>Altura</label>
+      <span>175 cm</span>
+    </div>
+
+    <div class="item">
+      <label>Idade</label>
+      <span>20</span>
+    </div>
+
+    <div class="item">
+      <label>Peso</label>
+      <span>70 kg</span>
+    </div>
+
+    <button>Salvar</button>
+
+  </div>
+
+</div>
+
+<script>
+function abrirPainel() {
+    document.getElementById("painel").classList.add("ativo");
+}
+
+function fecharPainel() {
+    document.getElementById("painel").classList.remove("ativo");
+}
+</script>
+
 </body>
-</html>

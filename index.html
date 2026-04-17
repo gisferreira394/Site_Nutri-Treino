@@ -7,14 +7,14 @@
 
 
   <!-- CSS -->
- <link rel="stylesheet" href="estiloconsultas.css">
+ <link rel="stylesheet" href="stylespaginicial.css">
 </head>
 <body>
   <!-- ===== Header / Navbar ===== -->
   <header class="site-header">
     <div class="topbar container">
      
-        <a href="index.html">
+       <a href="index.html">
     <img src="img/logonutri.png" alt="Logo" class="logo">
 </a>
 
@@ -33,6 +33,7 @@
       <nav class="quick-icons" aria-label="Acesso rápido">
         
           <!-- ícone usuário -->
+        <a href="login.php"> 
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21a8 8 0 0 0-16 0"></path>
@@ -65,9 +66,7 @@
       </nav>
     </div>
 
-
-    
-  <nav class="main-nav" aria-label="Principal">
+    <nav class="main-nav" aria-label="Principal">
         <ul class="nav-list">
             <li class="nav-item"><a class="nav-link" href="consultas.html">Consultas</a></li>
             <li class="nav-item"><a class="nav-link"href="treinos.html">Treinos</a></li>
@@ -76,27 +75,47 @@
             <li class="nav-item"><a class="nav-link" href="planos.html">Planos</a></li>
         </ul>
     </nav>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero container">
+      <div class="hero-copy">
+        <h1>Transforme sua <br> alimentação</h1>
+      </div>
+      <figure class="hero-media">
+        <img src="img/alimentacao-saudavel.jpg" alt="">
+      </figure>
+    </section>
   </header>
 
-<section class="parte-branca">
-    <div class="texto">
+  <!-- ===== Seção: Nutrição ao alcance ===== -->
+  <main>
+    <section class="feature container">
+      <div class="feature-text">
+        <h2><span>Nutrição ao alcance</span></h2>
         <p>
-            Conheça nossa filosofia baseada em evidências, avaliações nutricionais completas
-            e planos que cabem na sua rotina, com suporte contínuo para manter resultados.
+          Confira consultorias com nutricionistas certificados, crie um plano alimentar
+          personalizado e acompanhe seu progresso com ferramentas digitais integradas e suporte
+          contínuo.
         </p>
+        <a class="botao" href="consultas.html">Fazer consulta </a>
+      </div>
+    </section>
 
-        <a class="botao" href="planos.html"> Fazer consulta </a>
-    </div>
+    <!-- ===== Faixa verde de conteúdo ===== -->
+    <section class="highlight">
+      <div class="container highlight-inner">
+        <h3>Conteúdo geral complementar</h3>
+        <p>
+          Explore recursos como cronogramas de treino, dicas nutricionais, receitas rápidas e
+          suporte de especialistas para manter sua jornada saudável mais simples e eficaz.
+        </p>
+      </div>
+      
+    </section>
+  </main>
 
-    <div class="imagem">
-        <img src="img/consulta.jpeg" alt="imagem">
-    </div>
-</section>
-
-
-
-
-<footer class="footer">
+ <!-- ===== FOOTER ===== -->
+  <div class="highlight1">
     <div class="footer-container">
 
         <div class="footer-col">
@@ -136,7 +155,9 @@
     <div class="footer-copy">
         © 2026 Nutri&Treino — Todos os direitos reservados.
     </div>
+  </div>
 </footer>
+
 
 </body>
 </html>
