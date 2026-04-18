@@ -671,6 +671,7 @@ body {
 .titulo {
     font-size: 15px;
     margin: 10px 0;
+    color: black;
 }
 
 .preco {
@@ -679,7 +680,7 @@ body {
 }
 
 .preco.verde {
-    color: #1d8f3c;
+    color: #000000;
 }
 
 /* Botão */
