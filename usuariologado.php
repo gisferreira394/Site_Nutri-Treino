@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -165,42 +169,47 @@
 </footer>
 
   <!-- ===== PAINEL LATERAL ===== -->
-    <div id="painel" class="painel">
+   <form id="painel" class="painel" method="POST" action="t_usuario/salvar_perfil.php">
 
-    <button class="fechar" onclick="fecharPainel()">✖</button>
+    <button type="button" class="fechar" onclick="fecharPainel()">✖</button>
 
     <h2>Perfil</h2>
 
+    <p class="nome-usuario">
+    <?php echo $_SESSION["usuario_nome"]; ?>
+</p>
+
     <div class="item">
-      <label>Nome</label>
-      <span>Guilherme</span>
+        <label>Genero</label>
+        <select name="genero" required>
+            <option value="Masculino"><?php if(($dados['genero'] ?? '') == "Masculino") echo "selected"; ?>>
+              Masculino
+            </option>
+            <option value="Feminino"<?php if(($dados['genero'] ?? '') == "Feminino") echo "selected"; ?>>
+              Feminino
+            </option>
+        </select>
     </div>
 
     <div class="item">
-      <label>Sexo</label>
-      <span>Masculino</span>
+        <label>Altura</label>
+        <input type="text" name="altura" value="<?php echo $dados['altura'] ?? ''; ?>" placeholder="Ex: 1.75" required>
     </div>
 
     <div class="item">
-      <label>Altura</label>
-      <span>175 cm</span>
+        <label>Idade</label>
+        <input type="number" name="idade" value="<?php echo $dados['idade'] ?? ''; ?>" required>
     </div>
 
     <div class="item">
-      <label>Idade</label>
-      <span>20</span>
+        <label>Peso</label>
+        <input type="number" name="peso" value="<?php echo $dados['peso'] ?? ''; ?>" required>
     </div>
 
-    <div class="item">
-      <label>Peso</label>
-      <span>70 kg</span>
-    </div>
+    <button type="submit">Salvar</button>
 
-    <button>Salvar</button>
-
-  </div>
+</form>
   
-
 </div>
 
 <script>

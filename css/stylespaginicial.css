@@ -548,6 +548,22 @@ background-color: #387856;
     cursor: pointer;
 }
 
+.nome-usuario {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.item input,
+.item select {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    background: transparent;
+    text-align: right;
+}
+
 /* ITENS */
 .item {
     display: flex;

@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
 <meta charset="UTF-8">
 <title>Verificação</title>
-<link rel="stylesheet" href="../stylelogin.css">
+<link rel="stylesheet" href="../css/stylelogin.css">
 </head>
 <body>
 
