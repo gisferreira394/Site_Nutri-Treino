@@ -1,67 +1,79 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutri-Treino</title>
-    <link rel="stylesheet" href="css/stylevisualproduto.css">
+  <meta charset="UTF-8">
+  <title>Loja Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    .produto {
+      max-width: 400px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .produto img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .info {
+      margin-top: 15px;
+    }
+    .preco {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+    .acoes {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+    .acoes button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .comprar {
+      background-color: #007bff;
+      color: white;
+    }
+    .icone {
+      background-color: #f0f0f0;
+    }
+  </style>
 </head>
 <body>
-
-
-
-    <div class="produto-container">
-
-    <!-- IMAGEM PRINCIPAL -->
-    <div class="imagem-principal">
-        <img src="imgbarrinha/chocolate ao leite.png" id="imgPrincipal">
-    </div>
-
-    <!-- INFO -->
+  <div class="produto">
+    <img src="jaqueta.jpg" alt="Jaqueta de couro feminina">
     <div class="info">
-        <h2>Barrinha de chocolate</h2>
-        <p class="preco">R$ 180,00</p>
-
-        <div class="acoes">
-            <button class="btn-carrinho" onclick="adicionarCarrinho()">🛒 Comprar</button>
-            <button class="btn-fav" onclick="favoritar()">❤️</button>
-        </div>
+      <h2>Jaqueta de couro</h2>
+      <p class="preco">R$180,00</p>
     </div>
+    <div class="acoes">
+      <button class="comprar">Comprar</button>
+      <button class="icone" onclick="adicionarCarrinho()">🛒</button>
+      <button class="icone" onclick="adicionarFavoritos()">❤️</button>
+    </div>
+  </div>
 
-</div>
+  <script>
+    function adicionarCarrinho() {
+      alert("Produto adicionado ao carrinho!");
+      // Aqui você pode redirecionar para a página do carrinho:
+      // window.location.href = "carrinho.html";
+    }
 
-<script>
-function adicionarCarrinho() {
-
-    let produto = {
-        nome: "Jaqueta de couro feminina",
-        preco: 180,
-        imagem: "img/produto1.jpg"
-    };
-
-    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-    carrinho.push(produto);
-
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-    alert("Produto adicionado ao carrinho!");
-}
-
-function favoritar() {
-
-    let produto = {
-        nome: "Jaqueta de couro feminina"
-    };
-
-    let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-
-    favoritos.push(produto);
-
-    localStorage.setItem("favoritos", JSON.stringify(favoritos));
-
-    alert("Adicionado aos favoritos!");
-}
-</script>
+    function adicionarFavoritos() {
+      alert("Produto adicionado aos favoritos!");
+      // Aqui você pode redirecionar para a página de favoritos:
+      // window.location.href = "favoritos.html";
+    }
+  </script>
 </body>
 </html>
