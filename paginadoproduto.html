@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutri-Treino</title>
+    <link rel="stylesheet" href="css/stylevisualproduto.css">
+</head>
+<body>
+
+
+
+    <div class="produto-container">
+
+    <!-- IMAGEM PRINCIPAL -->
+    <div class="imagem-principal">
+        <img src="imgbarrinha/chocolate ao leite.png" id="imgPrincipal">
+    </div>
+
+    <!-- INFO -->
+    <div class="info">
+        <h2>Barrinha de chocolate</h2>
+        <p class="preco">R$ 180,00</p>
+
+        <div class="acoes">
+            <button class="btn-carrinho" onclick="adicionarCarrinho()">🛒 Comprar</button>
+            <button class="btn-fav" onclick="favoritar()">❤️</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function adicionarCarrinho() {
+
+    let produto = {
+        nome: "Jaqueta de couro feminina",
+        preco: 180,
+        imagem: "img/produto1.jpg"
+    };
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    carrinho.push(produto);
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    alert("Produto adicionado ao carrinho!");
+}
+
+function favoritar() {
+
+    let produto = {
+        nome: "Jaqueta de couro feminina"
+    };
+
+    let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+    favoritos.push(produto);
+
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    alert("Adicionado aos favoritos!");
+}
+</script>
+</body>
+</html>

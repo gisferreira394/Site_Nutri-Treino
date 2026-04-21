@@ -182,7 +182,8 @@ session_start();
     <div class="item">
         <label>Genero</label>
         <select name="genero" required>
-            <option value="Masculino"><?php if(($dados['genero'] ?? '') == "Masculino") echo "selected"; ?>>
+            <option value="Masculino"
+              <?php if(($dados['genero'] ?? '') == "Masculino") echo "selected"; ?>>
               Masculino
             </option>
             <option value="Feminino"<?php if(($dados['genero'] ?? '') == "Feminino") echo "selected"; ?>>

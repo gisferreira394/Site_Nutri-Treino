@@ -32,6 +32,18 @@
 
         <button type="submit">LOGIN</button>
 
+        <?php
+            $erro = $_GET['erro'] ?? '';
+        ?>
+
+        <?php if ($erro == "senha") { ?>
+            <p class="erro-msg">Senha incorreta!</p>
+        <?php } ?>
+
+        <?php if ($erro == "conta") { ?>
+            <p class="erro-msg">Conta não verificada ou não existe!</p>
+        <?php } ?>
+
     </form>
 </div>
 

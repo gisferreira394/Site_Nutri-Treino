@@ -557,11 +557,17 @@ background-color: #387856;
 
 .item input,
 .item select {
+    text-decoration: none;
     border: none;
-    border-bottom: 1px solid #ccc;
     outline: none;
     background: transparent;
     text-align: right;
+}
+
+.item select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 /* ITENS */
