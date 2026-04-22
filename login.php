@@ -26,11 +26,23 @@
         </div>
 
         <div class="options">
-            <a href="#">Cadastrar</a>
+            <a href="cadastrar.php">Cadastrar</a>
             <a href="#">Esqueceu a senha?</a>
         </div>
 
         <button type="submit">LOGIN</button>
+
+        <?php
+            $erro = $_GET['erro'] ?? '';
+        ?>
+
+        <?php if ($erro == "senha") { ?>
+            <p class="erro-msg">Senha incorreta!</p>
+        <?php } ?>
+
+        <?php if ($erro == "conta") { ?>
+            <p class="erro-msg">Conta não verificada ou não existe!</p>
+        <?php } ?>
 
     </form>
 </div>

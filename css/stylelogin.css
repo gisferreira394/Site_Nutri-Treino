@@ -92,3 +92,9 @@ button {
 button:hover {
     background: #1b3d5f;
 }
+.erro-msg {
+    color: #ffb3b3;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}

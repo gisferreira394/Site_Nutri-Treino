@@ -7,7 +7,7 @@ $mensagem = "";
 <head>
 <meta charset="UTF-8">
 <title>Cadastro</title>
-<link rel="stylesheet" href="../stylelogin.css">
+<link rel="stylesheet" href="../css/stylelogin.css">
 </head>
 <body>
 
