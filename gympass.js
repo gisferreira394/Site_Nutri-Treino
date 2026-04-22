@@ -1,5 +1,13 @@
 let tipoSelecionado = "";
 
+/* ===== MAPA DE TIPOS PARA TAGS OSM ===== */
+const tiposMap = {
+  fitness_centre: ['leisure=fitness_centre', 'leisure=sports_centre'], 
+  dance: ['leisure=fitness_centre', 'leisure=sports_centre'],           
+  pilates: ['leisure=fitness_centre', 'leisure=sports_centre'],                        
+  martial_arts: ['leisure=fitness_centre', 'leisure=sports_centre'] 
+};
+
 /* ===== SELEÇÃO DAS OPÇÕES ===== */
 document.querySelectorAll(".opcao").forEach(opcao => {
   opcao.addEventListener("click", () => {
@@ -44,14 +52,22 @@ function erroLocalizacao(err) {
 
 /* ===== BUSCAR LOCAIS ===== */
 function buscarLocais(lat, lon, tipo) {
-  const raio = 3000; // metros
+  const raio = 9000; // metros (9 km)
+  const filtros = tiposMap[tipo];
 
-  const query = `
+  let query = `
     [out:json];
-    node
-      ["sport"="${tipo}"]
-      (around:${raio},${lat},${lon});
-    out tags;
+    (
+  `;
+
+  filtros.forEach(f => {
+    query += `node[${f}](around:${raio},${lat},${lon});\n`;
+    query += `way[${f}](around:${raio},${lat},${lon});\n`;
+  });
+
+  query += `
+    );
+    out tags center;
   `;
 
   const url =
@@ -59,19 +75,19 @@ function buscarLocais(lat, lon, tipo) {
     encodeURIComponent(query);
 
   document.getElementById("resultado").innerHTML =
-    "<p>Buscando locais próximos...</p>";
+    "<p>Buscando locais próximos de 9 km...</p>";
 
   fetch(url)
     .then(res => res.json())
-    .then(data => mostrarResultados(data.elements))
+    .then(data => mostrarResultados(data.elements, lat, lon))
     .catch(() => {
       document.getElementById("resultado").innerHTML =
         "<p>Erro ao buscar locais.</p>";
     });
 }
 
-/* ===== MOSTRAR RESULTADOS COM ENDEREÇO ===== */
-function mostrarResultados(locais) {
+/* ===== MOSTRAR RESULTADOS COM FILTRO POR NOME ===== */
+function mostrarResultados(locais, latUser, lonUser) {
   const div = document.getElementById("resultado");
   div.innerHTML = "";
 
@@ -82,30 +98,48 @@ function mostrarResultados(locais) {
 
   locais.forEach(local => {
     const tags = local.tags || {};
+    const nome = tags.name;
 
-    const nome = tags.name || "Local sem nome";
+    // filtro por nome dependendo do tipo
+    if (tipoSelecionado === "pilates" && nome && !nome.toLowerCase().includes("pilates")) return;
+    if (tipoSelecionado === "dance" && nome && !nome.toLowerCase().match(/dança|ballet|dance/)) return;
+    if (tipoSelecionado === "martial_arts" && nome && !nome.toLowerCase().match(/jiu|karate|kung fu|taekwondo|muay thai|luta/)) return;
 
     const rua = tags["addr:street"] || "";
     const numero = tags["addr:housenumber"] || "";
     const bairro = tags["addr:neighbourhood"] || "";
     const cidade = tags["addr:city"] || "";
 
-    let endereco = "Endereço não informado";
+    if (!nome || (!rua && !cidade)) return;
 
-    if (rua || cidade) {
-      endereco = `${rua} ${numero}`.trim();
-      if (bairro) endereco += ` – ${bairro}`;
-      if (cidade) endereco += `, ${cidade}`;
+    let endereco = `${rua} ${numero}`.trim();
+    if (bairro) endereco += ` – ${bairro}`;
+    if (cidade) endereco += `, ${cidade}`;
+
+    // calcular distância aproximada
+    const latLocal = local.lat || (local.center && local.center.lat);
+    const lonLocal = local.lon || (local.center && local.center.lon);
+    let distanciaTxt = "";
+    if (latLocal && lonLocal) {
+      const R = 6371000;
+      const dLat = (latLocal - latUser) * Math.PI / 180;
+      const dLon = (lonLocal - lonUser) * Math.PI / 180;
+      const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(latUser * Math.PI/180) * Math.cos(latLocal * Math.PI/180) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      const distancia = R * c;
+      distanciaTxt = distancia > 1000 
+        ? ` (~${(distancia/1000).toFixed(1)} km)` 
+        : ` (~${Math.round(distancia)} m)`;
     }
 
     const card = document.createElement("div");
     card.className = "card";
-
     card.innerHTML = `
       <h3>${nome}</h3>
-      <p>📍 ${endereco}</p>
+      <p>📍 ${endereco}${distanciaTxt}</p>
     `;
-
     div.appendChild(card);
   });
 }
