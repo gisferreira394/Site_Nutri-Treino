@@ -1,79 +1,107 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Loja Online</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-    }
-    .produto {
-      max-width: 400px;
-      border: 1px solid #ccc;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    .produto img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .info {
-      margin-top: 15px;
-    }
-    .preco {
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-    }
-    .acoes {
-      margin-top: 15px;
-      display: flex;
-      gap: 10px;
-    }
-    .acoes button {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .comprar {
-      background-color: #007bff;
-      color: white;
-    }
-    .icone {
-      background-color: #f0f0f0;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutri&Treino</title>
+  <link rel="stylesheet" href="css/stylevisualproduto.css">
 </head>
 <body>
   <div class="produto">
-    <img src="jaqueta.jpg" alt="Jaqueta de couro feminina">
+
+    <!-- IMAGENS -->
+    <div class="imagens">
+        <div class="miniaturas">
+            <img src="imgbarrinha/avelã.png" onclick="trocarImagem(this)">
+            <img src="imgbarrinha/Banoffee.png" onclick="trocarImagem(this)">
+        </div>
+
+        <div class="principal">
+            <img id="imgPrincipal" src="imgbarrinha/café.png">
+        </div>
+    </div>
+
+    <!-- INFO -->
     <div class="info">
-      <h2>Jaqueta de couro</h2>
-      <p class="preco">R$180,00</p>
-    </div>
-    <div class="acoes">
-      <button class="comprar">Comprar</button>
-      <button class="icone" onclick="adicionarCarrinho()">🛒</button>
-      <button class="icone" onclick="adicionarFavoritos()">❤️</button>
-    </div>
-  </div>
+        <h2 id="nomeProduto">Pulseira Prata 925 Coração</h2>
 
-  <script>
-    function adicionarCarrinho() {
-      alert("Produto adicionado ao carrinho!");
-      // Aqui você pode redirecionar para a página do carrinho:
-      // window.location.href = "carrinho.html";
-    }
+        <p class="preco">R$ <span id="precoProduto">319.90</span></p>
 
-    function adicionarFavoritos() {
-      alert("Produto adicionado aos favoritos!");
-      // Aqui você pode redirecionar para a página de favoritos:
-      // window.location.href = "favoritos.html";
+        <p>prateda de forma reluzente</p>
+
+        <!-- QUANTIDADE -->
+        <div class="quantidade">
+            <button onclick="diminuir()">-</button>
+            <span id="qtd">1</span>
+            <button onclick="aumentar()">+</button>
+        </div>
+
+        <!-- AÇÕES -->
+        <div class="acoes">
+            <button class="comprar" onclick="comprar()">🛒 Comprar</button>
+            <button class="fav" onclick="favoritar()">❤️</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+let quantidade = 1;
+
+function trocarImagem(img) {
+    document.getElementById("imgPrincipal").src = img.src;
+}
+
+function aumentar() {
+    quantidade++;
+    document.getElementById("qtd").innerText = quantidade;
+}
+
+function diminuir() {
+    if (quantidade > 1) {
+        quantidade--;
+        document.getElementById("qtd").innerText = quantidade;
     }
-  </script>
+}
+
+// 🛒 COMPRAR (adiciona + vai pro carrinho)
+function comprar() {
+
+    let produto = {
+        nome: document.getElementById("nomeProduto").innerText,
+        preco: document.getElementById("precoProduto").innerText,
+        imagem: document.getElementById("imgPrincipal").src,
+        quantidade: quantidade
+    };
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    carrinho.push(produto);
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    // 🔥 REDIRECIONA
+    window.location.href = "carrinho.html";
+}
+
+// ❤️ FAVORITOS (não sai da página)
+function favoritar() {
+
+    let produto = {
+        nome: document.getElementById("nomeProduto").innerText,
+        imagem: document.getElementById("imgPrincipal").src
+    };
+
+    let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+    favoritos.push(produto);
+
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    alert("Adicionado aos favoritos!");
+}
+</script>
+  
 </body>
 </html>
