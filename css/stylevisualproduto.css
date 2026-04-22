@@ -1,54 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+    height: 100vh;
+}
 
 
-
-.produto-container {
+.produto {
     display: flex;
     gap: 40px;
     padding: 40px;
 }
 
-.galeria {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.thumb {
+/* MINIATURAS */
+.miniaturas img {
     width: 60px;
+    margin-bottom: 10px;
     cursor: pointer;
 }
 
-.imagem-principal img {
+/* IMAGEM PRINCIPAL */
+.principal {
+    width: 400px;
+    height: 400px;
     display: flex;
-    height: 80vh;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
 }
 
+/* 🔥 ISSO AQUI FAZ A MÁGICA */
+.principal img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* INFO */
 .info {
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .preco {
-    color: blue;
-    font-size: 20px;
-    margin: 10px 0;
+    font-size: 28px;
+    margin: 15px 0;
 }
 
+/* TAMANHO */
+.tamanhos button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* QUANTIDADE */
+.quantidade {
+    margin: 15px 0;
+}
+
+.quantidade button {
+    width: 30px;
+    height: 30px;
+}
+
+/* BOTÕES */
 .acoes {
     display: flex;
     gap: 10px;
 }
 
-.btn-carrinho {
-    background: #4c5fd5;
+.comprar {
+    background: #8e6ad6;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
 }
 
-.btn-fav {
-    background: white;
+.fav {
     border: 1px solid #ccc;
     border-radius: 50%;
     padding: 10px;

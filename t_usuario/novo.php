@@ -1,5 +1,11 @@
 <?php  
 $mensagem = "";
+
+if (isset($_GET["erro"])) {
+    if ($_GET["erro"] == "email") {
+        $mensagem = "Email já cadastrado!";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +49,7 @@ $mensagem = "";
 
         <!-- BOTÃO -->
         <button type="submit">CADASTRAR</button>
+
 
     </form>
 </div>

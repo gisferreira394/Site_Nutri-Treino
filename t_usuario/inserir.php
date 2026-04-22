@@ -18,7 +18,7 @@ $sql_check = "SELECT * FROM usuarios WHERE email='$email'";
 $res_check = mysqli_query($conexao, $sql_check);
 
 if (mysqli_num_rows($res_check) > 0) {
-    echo "Email já cadastrado!";
+    header("Location: novo.php?erro=email");
     exit;
 }
 
