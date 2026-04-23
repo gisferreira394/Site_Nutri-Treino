@@ -21,7 +21,7 @@ if (mysqli_num_rows($res) > 0) {
         $_SESSION["usuario_nome"] = $user["nome"];
 
         // redireciona
-        header("Location: usuariologado.php");
+        header("Location: logado/usuariologado.php");
         exit;
 
     } else {

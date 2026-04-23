@@ -1,10 +1,22 @@
+<?php
+session_start();
+include "../includes/conexao.php";
+
+$usuario_id = $_SESSION["usuario_id"];
+
+$sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
+$res = mysqli_query($conexao, $sql);
+
+$dados = mysqli_fetch_assoc($res);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Treinos - Nutri&Treino</title>
-  <link rel="stylesheet" href="css/stylestreinos.css">
+  <link rel="stylesheet" href="../css/stylestreinos.css">
 
 </head>
 
@@ -15,8 +27,8 @@
 
   <div class="topbar container">
 
-    <a href="index.html">
-      <img src="img/logonutri.png" alt="Nutri & Treino" class="logo">
+    <a href="usuariologado.php">
+      <img src="../img/logonutri.png" alt="Nutri & Treino" class="logo">
     </a>
 
     <form class="search">
@@ -34,12 +46,12 @@
       <nav class="quick-icons" aria-label="Acesso rápido">
         
           <!-- ícone usuário -->
+          <a href="#" onclick="abrirPainel()"> 
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21a8 8 0 0 0-16 0"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
-          <span>Minha conta</span>
         </a>
         
           <!-- ícone sacola -->
@@ -70,11 +82,11 @@
     
   <nav class="main-nav" aria-label="Principal">
         <ul class="nav-list">
-            <li class="nav-item"><a class="nav-link" href="consultas.php">Consultas</a></li>
-            <li class="nav-item"><a class="nav-link"href="treinos.html">Treinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="produto.html">Produtos</a></li>
-            <li class="nav-item"><a class="nav-link" href="gympass.html">Buscar Academias</a></li>
-            <li class="nav-item"><a class="nav-link" href="planos.html">Planos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../consultas.php">Consultas</a></li>
+            <li class="nav-item"><a class="nav-link"href="treinos.php">Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="produto.php">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="gympass.php">Buscar Academias</a></li>
+            <li class="nav-item"><a class="nav-link" href="planos.php">Planos</a></li>
         </ul>
     </nav>
   </header>
@@ -148,10 +160,10 @@
     <div class="footer-col">
       <h4>Seções</h4>
       <ul>
-        <li><a href="consultas.php">Consultas</a></li>
-        <li><a href="treinos.html">Treinos</a></li>
-        <li><a href="produto.html">Produtos</a></li>
-        <li><a href="planos.html">Planos</a></li>
+        <li><a href="../consultas.php">Consultas</a></li>
+        <li><a href="treinos.php">Treinos</a></li>
+        <li><a href="produto.php">Produtos</a></li>
+        <li><a href="planos.php">Planos</a></li>
       </ul>
     </div>
 
@@ -174,7 +186,64 @@
 
 </footer>
 
-<script src="treinos.js"></script>
+<!-- ===== PAINEL LATERAL ===== -->
+   <form id="painel" class="painel" method="POST" action="t_usuario/salvar_perfil.php">
+
+    <button type="button" class="fechar" onclick="fecharPainel()">✖</button>
+
+    <h2>Perfil</h2>
+
+    <p class="nome-usuario">
+    <?php echo $_SESSION["usuario_nome"]; ?>
+</p>
+
+    <div class="item">
+        <label>Genero</label>
+        <select name="genero" required>
+            <option value="Masculino"
+              <?php if(($dados['genero'] ?? '') == "Masculino") echo "selected"; ?>>
+              Masculino
+            </option>
+            <option value="Feminino"<?php if(($dados['genero'] ?? '') == "Feminino") echo "selected"; ?>>
+              Feminino
+            </option>
+        </select>
+    </div>
+
+    <div class="item">
+        <label>Altura</label>
+        <input type="text" name="altura" value="<?php echo $dados['altura'] ?? ''; ?>" placeholder="Ex: 1.75" required>
+    </div>
+
+    <div class="item">
+        <label>Idade</label>
+        <input type="number" name="idade" value="<?php echo $dados['idade'] ?? ''; ?>" required>
+    </div>
+
+    <div class="item">
+        <label>Peso</label>
+        <input type="number" name="peso" value="<?php echo $dados['peso'] ?? ''; ?>" required>
+    </div>
+
+    <button type="submit">Salvar</button>
+
+</form>
+  
+</div>
+
+<script>
+function abrirPainel() {
+    document.getElementById("painel").classList.add("ativo");
+}
+
+function fecharPainel() {
+    document.getElementById("painel").classList.remove("ativo");
+}
+</script>
+
+<script src="../treinos.js"></script>
+
+
 
 </body>
 </html>

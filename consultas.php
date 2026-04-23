@@ -1,3 +1,15 @@
+<?php
+session_start();
+include "includes/conexao.php";
+
+$usuario_id = $_SESSION["usuario_id"];
+
+// busca dados físicos
+$sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
+$res = mysqli_query($conexao, $sql);
+$dados = mysqli_fetch_assoc($res);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -84,19 +96,28 @@ button:hover {
 
 <h2>Plano Nutricional Semanal</h2>
 
-<input type="number" id="peso" placeholder="Peso (kg)">
-<input type="number" id="altura" placeholder="Altura (cm)">
-<input type="number" id="idade" placeholder="Idade">
+<input type="number" id="peso" 
+value="<?php echo $dados['peso'] ?? ''; ?>" 
+placeholder="Peso (kg)">
+
+<input type="number" id="altura" 
+value="<?php echo $dados['altura'] ?? ''; ?>" 
+placeholder="Altura (cm)">
+
+<input type="number" id="idade" 
+value="<?php echo $dados['idade'] ?? ''; ?>" 
+placeholder="Idade">
 
 <select id="sexo">
-<option value="M">Masculino</option>
-<option value="F">Feminino</option>
+    <option value="M" <?php if(($dados['genero'] ?? '') == "Masculino") echo "selected"; ?>>Masculino</option>
+    
+    <option value="F" <?php if(($dados['genero'] ?? '') == "Feminino") echo "selected"; ?>>Feminino</option>
 </select>
 
 <select id="objetivo">
-<option value="ganhar">Ganhar peso</option>
-<option value="manter">Manter peso</option>
-<option value="emagrecer">Emagrecer</option>
+    <option value="ganhar">Ganhar peso</option>
+    <option value="manter">Manter peso</option>
+    <option value="emagrecer">Emagrecer</option>
 </select>
 
 <button onclick="gerarPlano()">Gerar Plano</button>

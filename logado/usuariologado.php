@@ -1,6 +1,15 @@
 <?php
 session_start();
+include "../includes/conexao.php";
+
+$usuario_id = $_SESSION["usuario_id"];
+
+$sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
+$res = mysqli_query($conexao, $sql);
+
+$dados = mysqli_fetch_assoc($res);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +20,7 @@ session_start();
 
 
   <!-- CSS -->
- <link rel="stylesheet" href="css/stylespaginicial.css">
+ <link rel="stylesheet" href="../css/stylespaginicial.css">
 </head>
 <body>
 
@@ -23,8 +32,8 @@ session_start();
     <header class="site-header">
     <div class="topbar container">
      
-       <a href="index.html">
-    <img src="img/logonutri.png" alt="Logo" class="logo">
+       <a href="usuariologado.php">
+    <img src="../img/logonutri.png" alt="Logo" class="logo">
 </a>
 
 
@@ -78,11 +87,11 @@ session_start();
 
     <nav class="main-nav" aria-label="Principal">
         <ul class="nav-list">
-            <li class="nav-item"><a class="nav-link" href="consultas.html">Consultas</a></li>
-            <li class="nav-item"><a class="nav-link"href="treinos.html">Treinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="produto.html">Produtos</a></li>
-            <li class="nav-item"><a class="nav-link" href="gympass.html">Buscar Academias</a></li>
-            <li class="nav-item"><a class="nav-link" href="planos.html">Planos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../consultas.php">Consultas</a></li>
+            <li class="nav-item"><a class="nav-link"href="treinos.php">Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="produto.php">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="gympass.php">Buscar Academias</a></li>
+            <li class="nav-item"><a class="nav-link" href="planos.php">Planos</a></li>
         </ul>
     </nav>
 
@@ -92,7 +101,7 @@ session_start();
         <h1>Transforme sua <br> alimentação</h1>
       </div>
       <figure class="hero-media">
-        <img src="img/alimentacao-saudavel.jpg" alt="">
+        <img src="../img/alimentacao-saudavel.jpg" alt="">
       </figure>
     </section>
   </header>
@@ -107,7 +116,7 @@ session_start();
           personalizado e acompanhe seu progresso com ferramentas digitais integradas e suporte
           contínuo.
         </p>
-        <a class="botao" href="consultas.html">Fazer consulta </a>
+        <a class="botao" href="../consultas.php">Fazer consulta </a>
       </div>
     </section>
 

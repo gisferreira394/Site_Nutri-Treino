@@ -1,19 +1,39 @@
+<?php
+session_start();
+include "../includes/conexao.php";
 
+$usuario_id = $_SESSION["usuario_id"];
+
+$sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
+$res = mysqli_query($conexao, $sql);
+
+$dados = mysqli_fetch_assoc($res);
+?>
+
+
+<!DOCTYPE html>
+ <html lang="pt-br">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+ </head>
+ <body>
     <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whey</title>
-    <link rel="stylesheet" href="css/styleswhey.css">
+    <title>Página de Produtos</title>
+    <link rel="stylesheet" href="../css/stylesproduto.css">
 </head>
 <body>
 
    <header class="site-header">
     <div class="topbar container">
      
-       <a href="index.html">
-    <img src="img/logonutri.png" alt="Logo" class="logo">
+       <a href="usuariologado.php">
+    <img src="../img/logonutri.png" alt="Logo" class="logo">
 </a>
 
       <form class="search">
@@ -31,12 +51,12 @@
       <nav class="quick-icons" aria-label="Acesso rápido">
         
           <!-- ícone usuário -->
+          <a href="#" onclick="abrirPainel()"> 
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21a8 8 0 0 0-16 0"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
-          <span>Minha conta</span>
         </a>
         
           <!-- ícone sacola -->
@@ -68,10 +88,10 @@
   <nav class="main-nav" aria-label="Principal">
         <ul class="nav-list">
             <li class="nav-item"><a class="nav-link" href="consultas.php">Consultas</a></li>
-            <li class="nav-item"><a class="nav-link"href="treinos.html">Treinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="produto.html">Produtos</a></li>
-            <li class="nav-item"><a class="nav-link" href="gympass.html">Buscar Academias </a></li>
-            <li class="nav-item"><a class="nav-link" href="planos.html">Planos</a></li>
+            <li class="nav-item"><a class="nav-link"href="treinos.php">Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="produto.php">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="gympass.php">Buscar Academias</a></li>
+            <li class="nav-item"><a class="nav-link" href="planos.php">Planos</a></li>
         </ul>
     </nav>
 
@@ -81,11 +101,12 @@
 
     <nav class="categoria">
        <ul class="nav-lists">
-            <li class="nav-item"><a class="nav-link" href="whey.html">Whey</a></li>
-            <li class="nav-item"><a class="nav-link"href="pretreino.html">Pré-Treinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="barrinhas.html">Barrinhas</a></li>
-            <li class="nav-item"><a class="nav-link" href="vitaminas.html">Vitaminas</a></li>
-            <li class="nav-item"><a class="nav-link" href="creatina.html">Creatina</a></li>
+            <li class="nav-item"><a class="nav-link" href="../whey.html">Whey</a></li>
+            <li class="nav-item"><a class="nav-link"href="../pretreino.html">Pré-Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../barrinhas.html">Barrinhas</a></li>
+            <li class="nav-item"><a class="nav-link" href="../vitaminas.html">Vitaminas</a></li>
+            <li class="nav-item"><a class="nav-link" href="../creatina.html">Creatina</a></li>
+
         </ul>
     </nav>
  
@@ -100,150 +121,150 @@
 
         <!-- Produto 1 -->
        <div class="card">
-            <img src="imgwhey/Chocolate Belga.png">  
-             <p class="titulo">Whey Protein Chocolate Belga 900g</p>
+            <img src="../imgbarrinha/frutas.png">  
+             <p class="titulo">Barrinha de frutas</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
 
         <!-- Produto 2 -->
         <div class="card">
-            <img src="imgwhey/Baunilha Cremosa.png">  
-             <p class="titulo">Whey Protein Baunilha Cremosa 900g</p>
+            <img src="../imgcreatina/creatina500g.jpeg">  
+             <p class="titulo">Creatina 500g</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
-        
+        </div>
 
         <!-- Produto 3 -->
        <div class="card">
-            <img src="imgwhey/Morango Silvestre.png">  
-             <p class="titulo">Whey Protein Morango Silvestre 900g</p>
+            <img src="../imgvitamina/vitaminab12.jpeg">  
+             <p class="titulo">Vitamina B12</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
 
         <!-- Produto 4 -->
         <div class="card">
-            <img src="imgwhey/Cookies & Cream.png">  
-             <p class="titulo">Whey Protein Cookies & Cream 900g</p>
+            <img src="../imgpretreino/pitaya.jpeg">  
+             <p class="titulo">Pré-Treino de Pitaya</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
 
         <!-- Produto 5 -->
         <div class="card">
-            <img src="imgwhey/Café Espresso.png">  
-             <p class="titulo">Whey Protein Café Espresso 900g</p>
+            <img src="../imgwhey/Capuccino.png">  
+             <p class="titulo">Whey Protein de Capuccino 900g</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
 
         <!-- Produto 6 -->
        <div class="card">
-            <img src="imgwhey/Caramelo Salgado.png">  
-             <p class="titulo">Whey Protein Caramelo Salgado 900g</p>
+            <img src="../imgcreatina/creapure250g.jpeg">  
+             <p class="titulo">Creatina 250g</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
 
         <!-- Produto 7 -->
         <div class="card">
-            <img src="imgwhey/Banana Tropical.png">  
-             <p class="titulo">Whey Protein Banana Tropical 900g</p>
+            <img src="../imgpretreino/pre cereja.png">  
+             <p class="titulo">Pré-Treino de Cereja </p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
+
         <!-- Produto 8 -->
-       <div class="card">
-            <img src="imgwhey/Coco & Amêndoas.png">  
-             <p class="titulo">Whey Protein Coco & Amêndoas 900g</p>
+        <div class="card">
+            <img src="../imgbarrinha/pistachelimao.png">  
+             <p class="titulo">Barrinhas de Pistache com limão</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
 
         <!-- Produto 9 -->
         <div class="card">
-            <img src="imgwhey/Pão de Mel.png">  
-             <p class="titulo">Whey Protein Pão de Mel 900g</p>
+            <img src="../imgvitamina/vitaminaomega3.jpeg">  
+             <p class="titulo">Vitamina Omega3</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
 
         <div class="card">
-            <img src="imgwhey/Limão Siciliano.png">  
-             <p class="titulo">Whey Protein Limão Siciliano 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="imgwhey/Maracujá.png">  
-             <p class="titulo">Whey Protein Maracujá 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>Comprar</button>
-        </div>
-
-       <div class="card">
-            <img src="imgwhey/Pistache.png">  
-             <p class="titulo">Whey Protein Pistache 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="imgwhey/Capuccino.png">  
-             <p class="titulo">Whey Protein Capuccino 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="imgwhey/Mirtilo.png">  
-             <p class="titulo">Whey Protein Mirtilo 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="imgwhey/Doce de Leite.png">  
-             <p class="titulo">Whey Protein Doce de Leite 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>Comprar</button>
-        </div>
-
-
-        <div class="card">
-            <img src="imgwhey/Frutas Vermelhas.png">  
-             <p class="titulo">Whey Protein Frutas Vermelhas 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="imgwhey/Iogurte.png">  
-             <p class="titulo">Whey Protein Iogurte 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="imgwhey/Amora.png">  
-             <p class="titulo">Whey Protein Amora 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>Comprar</button>
-        </div>
-
-        <div class="card">
-            <img src="imgwhey/Abacaxi.png">  
+            <img src="../imgwhey/Abacaxi.png">  
              <p class="titulo">Whey Protein Abacaxi 900g</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
 
         <div class="card">
-            <img src="imgwhey/Framboesa & Baunilha.png">  
-             <p class="titulo">Whey Protein Framboesa & Baunilha 900g</p>
+            <img src="../imgbarrinha/cookie.png">  
+             <p class="titulo">Barrinha de Cookie</p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="../imgpretreino/pessego.png">  
+             <p class="titulo">Pré-Treino de Pêssego</p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="../imgcreatina/creapure1kg.jpeg">  
+             <p class="titulo">Creatina 1Kg</p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="../imgbarrinha/chocolate ao leite.png">  
+             <p class="titulo">Barrinha de Chocolate ao Leite </p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="../imgvitamina/vitaminac.jpeg">  
+             <p class="titulo">Vitamina C</p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>Comprar</button>
+        </div>
+
+
+        <div class="card">
+            <img src="../imgwhey/Iogurte.png">  
+             <p class="titulo">Whey Protein Iogurte 900g</p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="../imgpretreino/pre coco.png">  
+             <p class="titulo">Pré-Treino de Coco</p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>Comprar</button>
+        </div>
+        <div class="card">
+            <img src="../imgvitamina/vitaminaA.png">  
+             <p class="titulo">Vitamina A </p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="../imgbarrinha/Banoffee.png">  
+             <p class="titulo">Barrinha de Banoffee</p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="../imgwhey/Amora.png">  
+             <p class="titulo">Whey Protein Amora 900g</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>Comprar</button>
         </div>
@@ -293,7 +314,60 @@
         © 2026 Nutri&Treino — Todos os direitos reservados.
     </div>
 </footer>
+
+<!-- ===== PAINEL LATERAL ===== -->
+   <form id="painel" class="painel" method="POST" action="t_usuario/salvar_perfil.php">
+
+    <button type="button" class="fechar" onclick="fecharPainel()">✖</button>
+
+    <h2>Perfil</h2>
+
+    <p class="nome-usuario">
+    <?php echo $_SESSION["usuario_nome"]; ?>
+</p>
+
+    <div class="item">
+        <label>Genero</label>
+        <select name="genero" required>
+            <option value="Masculino"
+              <?php if(($dados['genero'] ?? '') == "Masculino") echo "selected"; ?>>
+              Masculino
+            </option>
+            <option value="Feminino"<?php if(($dados['genero'] ?? '') == "Feminino") echo "selected"; ?>>
+              Feminino
+            </option>
+        </select>
+    </div>
+
+    <div class="item">
+        <label>Altura</label>
+        <input type="text" name="altura" value="<?php echo $dados['altura'] ?? ''; ?>" placeholder="Ex: 1.75" required>
+    </div>
+
+    <div class="item">
+        <label>Idade</label>
+        <input type="number" name="idade" value="<?php echo $dados['idade'] ?? ''; ?>" required>
+    </div>
+
+    <div class="item">
+        <label>Peso</label>
+        <input type="number" name="peso" value="<?php echo $dados['peso'] ?? ''; ?>" required>
+    </div>
+
+    <button type="submit">Salvar</button>
+
+</form>
+  
+</div>
+
+<script>
+function abrirPainel() {
+    document.getElementById("painel").classList.add("ativo");
+}
+
+function fecharPainel() {
+    document.getElementById("painel").classList.remove("ativo");
+}
+</script>
  </body>
  </html>
-</body>
-</html>
