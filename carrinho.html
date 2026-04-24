@@ -1,29 +1,194 @@
 <!DOCTYPE html>
-<html lang="pt´br">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carrinho</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+}
+
+/* HEADER */
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* LISTA */
+#lista {
+    max-width: 900px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 15px;
+    padding: 10px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden; /* ESSENCIAL pra imagem */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* IMAGEM AJUSTADA */
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* NÃO ESTICA */
+}
+
+/* CONTEÚDO */
+.conteudo {
+    padding: 12px;
+    text-align: center;
+}
+
+.nome {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.preco {
+    color: #4CAF50;
+    font-size: 16px;
+}
+
+.qtd {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* BOTÕES */
+.remover {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.remover:hover {
+    background: #d32f2f;
+}
+
+.finalizar {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    margin: 10px auto 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.finalizar:hover {
+    background: #388e3c;
+}
+
+
+/* TOTAL */
+#total {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+</style>
+
 </head>
+
 <body>
-<h1>Carrinho</h1>
+
+<header class="h1"> Meu Carrinho</header>
+
 <div id="lista"></div>
+<div id="total"></div>
+
+<button class="finalizar" onclick="finalizarCompra()">
+    Finalizar Compra
+</button>
 
 <script>
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-let lista = document.getElementById("lista");
+function renderizarCarrinho() {
+    let lista = document.getElementById("lista");
+    let total = 0;
 
-carrinho.forEach(p => {
-    lista.innerHTML += `
-        <div>
-            <img src="${p.imagem}" width="100">
-            <p>${p.nome}</p>
-            <p>R$ ${p.preco}</p>
-            <p>Qtd: ${p.quantidade}</p>
-        </div>
-    `;
-});
+    lista.innerHTML = "";
+
+    if (carrinho.length === 0) {
+        lista.innerHTML = "<p style='text-align:center;'>Seu carrinho está vazio 🛒</p>";
+        document.getElementById("total").innerHTML = "";
+        return;
+    }
+
+    carrinho.forEach((p, index) => {
+        total += p.preco * p.quantidade;
+
+        lista.innerHTML += `
+            <div class="card">
+                <img src="${p.imagem}">
+                <div class="conteudo">
+                    <div class="nome">${p.nome}</div>
+                    <div class="preco">R$ ${p.preco}</div>
+                    <div class="qtd">Quantidade: ${p.quantidade}</div>
+                    <button class="remover" onclick="removerItem(${index})">
+                        Remover
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById("total").innerHTML =
+        "Total: R$ " + total.toFixed(2);
+}
+
+function removerItem(index) {
+    carrinho.splice(index, 1);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    renderizarCarrinho();
+}
+
+function finalizarCompra() {
+    if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+    }
+
+    alert("Compra finalizada com sucesso! 🎉");
+
+    carrinho = [];
+    localStorage.removeItem("carrinho");
+    renderizarCarrinho();
+}
+
+renderizarCarrinho();
 </script>
+
 </body>
 </html>
