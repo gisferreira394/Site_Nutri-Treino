@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nutri&Treino</title>
-  <link rel="stylesheet" href="css/stylevisualproduto.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto | Nutri&Treino</title>
+    <link rel="stylesheet" href="css/stylevisualproduto.css">
 </head>
 <body>
-  <div class="produto">
+
+<div class="produto">
 
     <!-- IMAGENS -->
     <div class="imagens">
+
+        <!-- Miniaturas (opcional – pode remover se quiser) -->
         <div class="miniaturas">
-            <img src="imgbarrinha/avelã.png" onclick="trocarImagem(this)">
-            <img src="imgbarrinha/Banoffee.png" onclick="trocarImagem(this)">
+            <img id="mini1" onclick="trocarImagem(this)">
+            <img id="mini2" onclick="trocarImagem(this)">
         </div>
 
+        <!-- Imagem principal -->
         <div class="principal">
-            <img id="imgPrincipal" src="imgbarrinha/café.png">
+            <img id="imgPrincipal" alt="Imagem do produto">
         </div>
     </div>
 
     <!-- INFO -->
     <div class="info">
-        <h2 id="nomeProduto">Pulseira Prata 925 Coração</h2>
+        <h2 id="nomeProduto"></h2>
 
-        <p class="preco">R$ <span id="precoProduto">319.90</span></p>
+        <p class="preco">
+            R$ <span id="precoProduto"></span>
+        </p>
 
-        <p>prateda de forma reluzente</p>
+        <p id="descricaoProduto"></p>
 
         <!-- QUANTIDADE -->
         <div class="quantidade">
@@ -41,17 +47,40 @@
             <button class="comprar" onclick="comprar()">🛒 Comprar</button>
             <button class="fav" onclick="favoritar()">❤️</button>
         </div>
-
     </div>
 
 </div>
-
 <script>
-let quantidade = 1;
+/* =======================
+   CARREGAR PRODUTO DA URL
+======================= */
+const params = new URLSearchParams(window.location.search);
 
-function trocarImagem(img) {
-    document.getElementById("imgPrincipal").src = img.src;
+const nome  = params.get("nome");
+const preco = params.get("preco");
+const img   = params.get("img");
+const desc  = params.get("desc");
+
+if (!nome || !preco || !img) {
+    alert("Produto inválido!");
 }
+
+/* Preenche os dados na página */
+document.getElementById("nomeProduto").innerText = nome;
+document.getElementById("precoProduto").innerText = preco;
+document.getElementById("descricaoProduto").innerText =
+    desc || "Produto de alta qualidade Nutri&Treino.";
+
+document.getElementById("imgPrincipal").src = img;
+
+/* Miniaturas (usam a mesma imagem por enquanto) */
+document.getElementById("mini1").src = img;
+document.getElementById("mini2").src = img;
+
+/* =======================
+   QUANTIDADE
+======================= */
+let quantidade = 1;
 
 function aumentar() {
     quantidade++;
@@ -65,43 +94,40 @@ function diminuir() {
     }
 }
 
-// 🛒 COMPRAR (adiciona + vai pro carrinho)
-function comprar() {
+function trocarImagem(el) {
+    document.getElementById("imgPrincipal").src = el.src;
+}
 
-    let produto = {
-        nome: document.getElementById("nomeProduto").innerText,
-        preco: document.getElementById("precoProduto").innerText,
-        imagem: document.getElementById("imgPrincipal").src,
-        quantidade: quantidade
+/* =======================
+   COMPRAR
+======================= */
+function comprar() {
+    const produto = {
+        nome,
+        preco,
+        imagem: img,
+        quantidade
     };
 
-    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
+    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
     carrinho.push(produto);
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-    // 🔥 REDIRECIONA
     window.location.href = "carrinho.html";
 }
 
-// ❤️ FAVORITOS (não sai da página)
+/* =======================
+   FAVORITOS
+======================= */
 function favoritar() {
+    const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
-    let produto = {
-        nome: document.getElementById("nomeProduto").innerText,
-        imagem: document.getElementById("imgPrincipal").src
-    };
-
-    let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-
-    favoritos.push(produto);
+    favoritos.push({
+        nome,
+        imagem: img
+    });
 
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
-
-    alert("Adicionado aos favoritos!");
+    alert("Produto adicionado aos favoritos!");
 }
 </script>
-  
-</body>
-</html>
