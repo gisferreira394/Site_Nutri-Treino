@@ -58,6 +58,13 @@
     gap: 18px;
 }
 
+
+.link-cesta {
+  color: inherit;       /* herda branco do header */
+  text-decoration: none;
+}
+
+
 .icon-text {
     display: flex;
     align-items: center;
