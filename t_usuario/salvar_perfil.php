@@ -30,6 +30,6 @@ if (mysqli_num_rows($res) > 0) {
 
 mysqli_query($conexao, $sql);
 
-header("Location: ../usuariologado.php"); // ou sua página
+header("Location: ../logado/usuariologado.php"); // ou sua página
 exit;
 ?>

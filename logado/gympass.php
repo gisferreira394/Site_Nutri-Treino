@@ -10,33 +10,23 @@ $res = mysqli_query($conexao, $sql);
 $dados = mysqli_fetch_assoc($res);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nutri&Treino</title>
-
-
-  <!-- CSS -->
- <link rel="stylesheet" href="../css/stylespaginicial.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymPass</title>
+    <link rel="stylesheet" href="../css/stylesgympass.css">
 </head>
 <body>
-
-
-  <!-- ===== CONTEÚDO PRINCIPAL (SEU SITE) ===== -->
-  <div class="conteudo">
-
-    <!-- ===== Header / Navbar ===== -->
-    <header class="site-header">
+ 
+  <!-- ===== Header / Navbar ===== -->
+  <header class="site-header">
     <div class="topbar container">
      
-       <a href="usuariologado.php">
+        <a href="usuariologado.php">
     <img src="../img/logonutri.png" alt="Logo" class="logo">
 </a>
-
-
 
       <form class="search">
         <input type="search" placeholder="Buscar" aria-label="Buscar" />
@@ -53,7 +43,7 @@ $dados = mysqli_fetch_assoc($res);
       <nav class="quick-icons" aria-label="Acesso rápido">
         
           <!-- ícone usuário -->
-        <a href="#" onclick="abrirPainel()"> 
+          <a href="#" onclick="abrirPainel()"> 
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21a8 8 0 0 0-16 0"></path>
@@ -62,18 +52,23 @@ $dados = mysqli_fetch_assoc($res);
         </a>
         
           <!-- ícone sacola -->
-          <svg class="icone-cesta"
-     width="22" height="22"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     aria-hidden="true">
-  <path d="M6 2h12l2 7H4l2-7Z"></path>
-  <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
-</svg>
+         <a href="../carrinho.html" class="link-cesta" aria-label="Carrinho de compras">
+  <svg
+    class="icone-cesta"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true">
+    
+    <path d="M6 2h12l2 7H4l2-7Z"></path>
+    <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
+  </svg>
+</a>
         </a>
     
           <!-- ícone coração -->
@@ -85,7 +80,10 @@ $dados = mysqli_fetch_assoc($res);
       </nav>
     </div>
 
-    <nav class="main-nav" aria-label="Principal">
+
+
+    
+  <nav class="main-nav" aria-label="Principal">
         <ul class="nav-list">
             <li class="nav-item"><a class="nav-link" href="../consultas.php">Consultas</a></li>
             <li class="nav-item"><a class="nav-link"href="treinos.php">Treinos</a></li>
@@ -94,47 +92,58 @@ $dados = mysqli_fetch_assoc($res);
             <li class="nav-item"><a class="nav-link" href="planos.php">Planos</a></li>
         </ul>
     </nav>
-
-    <!-- ===== Hero ===== -->
-    <section class="hero container">
-      <div class="hero-copy">
-        <h1>Transforme sua <br> alimentação</h1>
-      </div>
-      <figure class="hero-media">
-        <img src="../img/alimentacao-saudavel.jpg" alt="">
-      </figure>
-    </section>
   </header>
 
-  <!-- ===== Seção: Nutrição ao alcance ===== -->
-  <main>
-    <section class="feature container">
-      <div class="feature-text">
-        <h2><span>Nutrição ao alcance</span></h2>
-        <p>
-          Confira consultorias com nutricionistas certificados, crie um plano alimentar
-          personalizado e acompanhe seu progresso com ferramentas digitais integradas e suporte
-          contínuo.
-        </p>
-        <a class="botao" href="../consultas.php">Fazer consulta </a>
-      </div>
-    </section>
 
-    <!-- ===== Faixa verde de conteúdo ===== -->
-    <section class="highlight">
-      <div class="container highlight-inner">
-        <h3>Conteúdo geral complementar</h3>
-        <p>
-          Explore recursos como cronogramas de treino, dicas nutricionais, receitas rápidas e
-          suporte de especialistas para manter sua jornada saudável mais simples e eficaz.
-        </p>
-      </div>
-      
-    </section>
-  </main>
+<main>
 
- <!-- ===== FOOTER ===== -->
-  <div class="highlight1">
+  <!-- SEÇÃO GYMPASS -->
+  <section class="gympass-hero">
+    <h2 >Localizar academias </h2>
+    <p>
+      Com o GymPass você tem acesso a diversas academias, studios e atividades
+      físicas em um único plano. Treine do seu jeito, onde quiser.
+    </p>
+  
+
+  <!-- BENEFÍCIOS -->
+  
+<h1 class="center">Encontre atividades perto de você</h1>
+
+<div class="opcoes">
+
+  <div class="opcao" data-tipo="fitness_centre">
+    🏋️
+    <span>Academia</span>
+  </div>
+
+  <div class="opcao" data-tipo="dance">
+    💃
+    <span>Dança</span>
+  </div>
+
+  <div class="opcao" data-tipo="pilates">
+    🧘‍♂️
+    <span>Pilates</span>
+  </div>
+
+  <div class="opcao" data-tipo="martial_arts">
+    🥊
+    <span>Lutas</span>
+  </div>
+
+</div>
+
+<button id="buscar">Buscar perto de mim</button>
+
+<div id="resultado"></div>
+
+<script src="../gympass.js"></script>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
     <div class="footer-container">
 
         <div class="footer-col">
@@ -174,10 +183,9 @@ $dados = mysqli_fetch_assoc($res);
     <div class="footer-copy">
         © 2026 Nutri&Treino — Todos os direitos reservados.
     </div>
-  </div>
 </footer>
 
-  <!-- ===== PAINEL LATERAL ===== -->
+<!-- ===== PAINEL LATERAL ===== -->
    <form id="painel" class="painel" method="POST" action="../t_usuario/salvar_perfil.php">
 
     <button type="button" class="fechar" onclick="fecharPainel()">✖</button>
@@ -232,4 +240,6 @@ function fecharPainel() {
 }
 </script>
 
+
 </body>
+</html>

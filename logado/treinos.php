@@ -187,7 +187,7 @@ $dados = mysqli_fetch_assoc($res);
 </footer>
 
 <!-- ===== PAINEL LATERAL ===== -->
-   <form id="painel" class="painel" method="POST" action="t_usuario/salvar_perfil.php">
+   <form id="painel" class="painel" method="POST" action="../t_usuario/salvar_perfil.php">
 
     <button type="button" class="fechar" onclick="fecharPainel()">✖</button>
 

@@ -96,19 +96,11 @@ button:hover {
 
 <h2>Plano Nutricional Semanal</h2>
 
-<input type="number" id="peso" 
-value="<?php echo $dados['peso'] ?? ''; ?>" 
-placeholder="Peso (kg)">
+<input type="number" id="peso" value="<?php echo $dados['peso'] ?? ''; ?>" readonly>
+<input type="number" id="altura" value="<?php echo $dados['altura'] ?? ''; ?>" readonly>
+<input type="number" id="idade" value="<?php echo $dados['idade'] ?? ''; ?>" readonly>
 
-<input type="number" id="altura" 
-value="<?php echo $dados['altura'] ?? ''; ?>" 
-placeholder="Altura (cm)">
-
-<input type="number" id="idade" 
-value="<?php echo $dados['idade'] ?? ''; ?>" 
-placeholder="Idade">
-
-<select id="sexo">
+<select id="sexo" disabled>
     <option value="M" <?php if(($dados['genero'] ?? '') == "Masculino") echo "selected"; ?>>Masculino</option>
     
     <option value="F" <?php if(($dados['genero'] ?? '') == "Feminino") echo "selected"; ?>>Feminino</option>
