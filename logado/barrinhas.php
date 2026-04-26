@@ -10,21 +10,20 @@ $res = mysqli_query($conexao, $sql);
 $dados = mysqli_fetch_assoc($res);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Produtos</title>
-    <link rel="stylesheet" href="../css/stylesproduto.css">
+    <title>Barrinhas</title>
+    <link rel="stylesheet" href="../css/styleswhey.css">
 </head>
 <body>
 
    <header class="site-header">
     <div class="topbar container">
      
-       <a href="index.html">
+       <a href="usuariologado.php">
     <img src="../img/logonutri.png" alt="Logo" class="logo">
 </a>
 
@@ -52,7 +51,7 @@ $dados = mysqli_fetch_assoc($res);
         </a>
         
           <!-- ícone sacola -->
-          <a href="carrinho.html" class="link-cesta" aria-label="Carrinho de compras">
+          <a href="../carrinho.html" class="link-cesta" aria-label="Carrinho de compras">
   <svg
     class="icone-cesta"
     width="22"
@@ -69,6 +68,7 @@ $dados = mysqli_fetch_assoc($res);
     <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
   </svg>
 </a>
+        </a>
     
           <!-- ícone coração -->
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -102,7 +102,6 @@ $dados = mysqli_fetch_assoc($res);
             <li class="nav-item"><a class="nav-link" href="barrinhas.php">Barrinhas</a></li>
             <li class="nav-item"><a class="nav-link" href="vitaminas.php">Vitaminas</a></li>
             <li class="nav-item"><a class="nav-link" href="creatina.php">Creatina</a></li>
-
         </ul>
     </nav>
  
@@ -116,111 +115,104 @@ $dados = mysqli_fetch_assoc($res);
     <section class="produtos">
 
         <!-- Produto 1 -->
- <div class="card">
-    <img src="../imgbarrinha/frutas.png" alt="Barrinha de frutas">
-
-    <p class="titulo">Barrinha de frutas</p>
-    <p class="preco verde">R$ 94,90 no PIX</p>
-
-    <button>
-    <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Barrinha%20de%20Frutas&preco=94.90&img=imgbarrinha/frutas.png&desc=Barrinha%20nutritiva%20com%20frutas%20vermelhas">
-        Comprar
-    </a>
-    </button>
-</div>
-
-
-        <!-- Produto 2 -->
-        <div class="card">
-            <img src="../imgcreatina/creatina500g.jpeg">  
-             <p class="titulo">Creatina 500g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-           
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Creatina&preco=94.90&img=imgcreatina/creatina500g.jpeg&desc=Creatina">
-        Comprar
-    </a>
-    </button>
-           
-        </div>
-        </div>
-
-        <!-- Produto 3 -->
        <div class="card">
-            <img src="../imgvitamina/vitaminab12.jpeg">  
-             <p class="titulo">Vitamina B12</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-          <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina%20B12&preco=94.90&img=imgvitamina/vitaminab12.jpeg&desc=vitaminab12">
-        Comprar
-    </a>
-    </button>
-        </div>
-
-        <!-- Produto 4 -->
-        <div class="card">
-            <img src="../imgpretreino/pitaya.jpeg">  
-             <p class="titulo">Pré-Treino de Pitaya</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-           <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré-Treino%20de%20Pitaya&preco=94.90&img=imgpretreino/pitaya.jpeg&desc=Pitaya">
-        Comprar
-    </a>
-    </button>
-        </div>
-
-        <!-- Produto 5 -->
-        <div class="card">
-            <img src="../imgwhey/Capuccino.png">  
-             <p class="titulo">Whey Protein de Capuccino 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-           <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Whey de Capuccino&preco=94.90&img=imgwhey/Capuccino.png&desc=Whey">
-        Comprar
-    </a>
-    </button>
-                </a>
-        </div>
-
-        <!-- Produto 6 -->
-       <div class="card">
-            <img src="../imgcreatina/creapure250g.jpeg">  
-             <p class="titulo">Creatina 250g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-           <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Creatina 250g&preco=94.90&img=imgcreatina/creapure250g.jpeg&desc=creatina">
-        Comprar
-    </a>
-    </button>
-        </div>
-
-        <!-- Produto 7 -->
-        <div class="card">
-            <img src="../imgpretreino/pre cereja.png">  
-             <p class="titulo">Pré-Treino de Cereja </p>
+            <img src="../imgbarrinha/morango.png">  
+             <p class="titulo">Barra de proteína - Morango </p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré-Treino de Cereja&preco=94.90&img=imgpretreino/pre cereja.png&desc=Pré-Treino de Cereja">
+       href="../paginadoproduto.html?nome=Barra de proteína - Morango&preco=94.90&img=imgbarrinha/morango.png&desc=Barra de proteína - Morango">
         Comprar
     </a>
             </button>
         </div>
 
-        <!-- Produto 8 -->
+        <!-- Produto 2 -->
         <div class="card">
-            <img src="../imgbarrinha/pistachelimao.png">  
-             <p class="titulo">Barrinhas de Pistache com limão</p>
+            <img src="../imgbarrinha/chocolate ao leite.png">  
+             <p class="titulo">Barra de proteína - Chocolate ao Leite </p>
             <p class="preco verde">R$ 94,90 no PIX</p>
-          <button>
+            <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Barrinhas de Pistache com limão&preco=94.90&img=imgbarrinha/pistachelimao.png&desc=Barrinhas de Pistache com limão">
+       href="../paginadoproduto.html?nome=Barra de proteína - Chocolate ao Leite&preco=94.90&img=imgbarrinha/chocolate ao leite.png&desc=Barra de proteína - Chocolate ao Leite">
+        Comprar
+    </a>
+            </button>
+        </div>
+        
+
+        <!-- Produto 3 -->
+       <div class="card">
+            <img src="../imgbarrinha/chocolate branco.png">  
+             <p class="titulo">Barra de proteína - Chocolate Branco </p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>
+               <a class="btn-comprar"
+       href="../paginadoproduto.html?nome=Barra de proteína - Chocolate Branco&preco=94.90&img=imgbarrinha/chocolate branco.png&desc=Barra de proteína - Chocolate Branco">
+        Comprar
+    </a>
+            </button>
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="card">
+            <img src="../imgbarrinha/cookie.png">  
+             <p class="titulo">Barra de proteína - Cookies </p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>
+               <a class="btn-comprar"
+       href="../paginadoproduto.html?nome=Barra de proteína - Cookies&preco=94.90&img=imgbarrinha/cookie.png&desc=Barra de proteína - Cookies">
+        Comprar
+    </a>
+            </button>
+        </div>
+
+        <!-- Produto 5 -->
+        <div class="card">
+            <img src="../imgbarrinha/chocolate dark.png">  
+             <p class="titulo">Barra de proteína - Chocolate Dark </p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>
+               <a class="btn-comprar"
+       href="../paginadoproduto.html?nome=Barra de proteína - Chocolate Dark&preco=94.90&img=imgbarrinha/chocolate dark.png&desc=Barra de proteína - Chocolate Dark">
+        Comprar
+    </a>
+            </button>
+        </div>
+
+        <!-- Produto 6 -->
+       <div class="card">
+            <img src="../imgbarrinha/Banoffee.png">  
+             <p class="titulo">Barra de proteína - Banoffee </p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+           <button>
+               <a class="btn-comprar"
+       href="../paginadoproduto.html?nome=Barra de proteína - Banoffee&preco=94.90&img=imgbarrinha/Banoffee.png&desc=Barra de proteína - Banoffee">
+        Comprar
+    </a>
+            </button>
+        </div>
+
+        <!-- Produto 7 -->
+        <div class="card">
+            <img src="../imgbarrinha/frutas.png">  
+             <p class="titulo">Barra de proteína - Frutas Vermelhas </p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>
+               <a class="btn-comprar"
+       href="../paginadoproduto.html?nome=Barra de proteína - Frutas Vermelhas&preco=94.90&img=imgbarrinha/frutas.png&desc=Barra de proteína - Frutas Vermelhas">
+        Comprar
+    </a>
+            </button>
+        </div>
+        <!-- Produto 8 -->
+       <div class="card">
+            <img src="../imgbarrinha/avelã.png">  
+             <p class="titulo">Barra de proteína - Avelã </p>
+            <p class="preco verde">R$ 94,90 no PIX</p>
+            <button>
+               <a class="btn-comprar"
+       href="../paginadoproduto.html?nome=Barra de proteína - Avelã &preco=94.90&img=imgbarrinha/avelã.png&desc=Barra de proteína - Avelã ">
         Comprar
     </a>
             </button>
@@ -228,144 +220,24 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 9 -->
         <div class="card">
-            <img src="../imgvitamina/vitaminaomega3.jpeg">  
-             <p class="titulo">Vitamina Omega3</p>
+            <img src="../imgbarrinha/pistachelimao.png">  
+             <p class="titulo">Barra de proteína - Pistache com Limão </p>
             <p class="preco verde">R$ 94,90 no PIX</p>
-          <button>
+            <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina Omega3&preco=94.90&img=imgvitamina/vitaminaomega3.jpeg&desc=Vitamina Omega3">
+       href="../paginadoproduto.html?nome=Barra de proteína - Pistache com Limão- Avelã &preco=94.90&img=imgbarrinha/pistachelimao.png&desc=Barra de proteína - Pistache com Limão">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgwhey/Abacaxi.png">  
-             <p class="titulo">Whey Protein Abacaxi 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-           <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Whey Protein Abacaxi 900g&preco=94.90&img=imgwhey/Abacaxi.png&desc=Whey Protein Abacaxi 900g">
-        Comprar
-    </a>
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="../imgbarrinha/cookie.png">  
-             <p class="titulo">Barrinha de Cookie</p>
+            <img src="../imgbarrinha/café.png">  
+             <p class="titulo">Barra de proteína - Café </p>
             <p class="preco verde">R$ 94,90 no PIX</p>
              <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Barrinha de Cookie&preco=94.90&img=imgbarrinha/cookie.png&desc=Barrinha de Cookie">
-        Comprar
-    </a>
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="../imgpretreino/pessego.png">  
-             <p class="titulo">Pré-Treino de Pêssego</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré-Treino de Pêssego&preco=94.90&img=imgpretreino/pessego.png&desc=Pré-Treino de Pêssego">
-        Comprar
-    </a>
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="../imgcreatina/creapure1kg.jpeg">  
-             <p class="titulo">Creatina 1Kg</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Creatina 1Kg&preco=94.90&img=imgcreatina/creapure1kg.jpeg&desc=Creatina 1Kg">
-        Comprar
-    </a>
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="../imgbarrinha/chocolate ao leite.png">  
-             <p class="titulo">Barrinha de Chocolate ao Leite </p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Barrinha de Chocolate ao Leite&preco=94.90&img=imgbarrinha/chocolate ao leite.png&desc=Barrinha de Chocolate ao Leite">
-        Comprar
-    </a>
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="../imgvitamina/vitaminac.jpeg">  
-             <p class="titulo">Vitamina C</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina C&preco=94.90&img=imgvitamina/vitaminac.jpeg&desc=Vitamina C">
-        Comprar
-    </a>
-            </button>
-        </div>
-
-
-        <div class="card">
-            <img src="../imgwhey/Iogurte.png">  
-             <p class="titulo">Whey Protein Iogurte 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Whey Protein Iogurte 900g&preco=94.90&img=imgwhey/Iogurte.png&desc=Whey Protein Iogurte 900g">
-        Comprar
-    </a>
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="../imgpretreino/pre coco.png">  
-             <p class="titulo">Pré-Treino de Coco</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré-Treino de Coco&preco=94.90&img=imgpretreino/pre coco.png&desc=Pré-Treino de Coco">
-        Comprar
-    </a>
-            </button>
-        </div>
-        <div class="card">
-            <img src="../imgvitamina/vitaminaA.png">  
-             <p class="titulo">Vitamina A </p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina A&preco=94.90&img=imgvitamina/vitaminaA.png&desc=Vitamina A">
-        Comprar
-    </a>
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="../imgbarrinha/Banoffee.png">  
-             <p class="titulo">Barrinha de Banoffee</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Barrinha de Banoffee&preco=94.90&img=imgbarrinha/Banoffee.png&desc=Barrinha de Banoffee">
-        Comprar
-    </a>
-            </button>
-        </div>
-
-        <div class="card">
-            <img src="../imgwhey/Amora.png">  
-             <p class="titulo">Whey Protein Amora 900g</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
-            <button>
-               <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Whey Protein Amora 900g&preco=94.90&img=imgwhey/Amora.png&desc=Whey Protein Amora 900g">
+       href="../paginadoproduto.html?nome=Barra de proteína - Café&preco=94.90&img=imgbarrinha/café.png&desc=Barra de proteína - Café">
         Comprar
     </a>
             </button>
