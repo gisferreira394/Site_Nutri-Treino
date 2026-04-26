@@ -65,7 +65,9 @@
 }
 
 
-.icon-text {
+.icon-text a{
+    color: white;
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 6px;
