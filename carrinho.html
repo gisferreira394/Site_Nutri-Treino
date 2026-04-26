@@ -30,91 +30,136 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 15px;
-    padding: 10px;
 }
 
 /* CARD */
 .card {
     background: white;
     border-radius: 12px;
-    overflow: hidden; /* ESSENCIAL pra imagem */
+    overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* IMAGEM AJUSTADA */
 .card img {
     width: 100%;
     height: 150px;
-    object-fit: cover; /* NÃO ESTICA */
+    object-fit: cover;
 }
 
-/* CONTEÚDO */
 .conteudo {
     padding: 12px;
     text-align: center;
 }
 
 .nome {
-    font-size: 18px;
     font-weight: bold;
-    margin: 8px 0;
 }
 
 .preco {
     color: #4CAF50;
-    font-size: 16px;
 }
 
-.qtd {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-/* BOTÕES */
 .remover {
     background: #f44336;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 8px;
     border-radius: 6px;
     cursor: pointer;
 }
 
-.remover:hover {
-    background: #d32f2f;
+/* ===== PAINEL ===== */
+.painel {
+    max-width: 900px;
+    margin: 20px auto;
 }
 
-.finalizar {
-    display: block;
-    width: 100%;
-    max-width: 900px;
-    margin: 10px auto 20px;
+/* ===== BOX PADRÃO ===== */
+.box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== FRETE ===== */
+.frete-input {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.frete-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.frete-input button {
     background: #4CAF50;
     color: white;
     border: none;
-    padding: 15px;
-    font-size: 18px;
-    border-radius: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-.finalizar:hover {
+.frete-input button:hover {
     background: #388e3c;
 }
 
+.prazo {
+    font-size: 14px;
+    color: #666;
+}
 
-/* TOTAL */
-#total {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 15px;
-    background: white;
-    border-radius: 10px;
-    font-size: 18px;
+/* ===== CUPOM ===== */
+.cupom-box input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.cupom-box button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background: #ff9800;
+    border: none;
+    color: white;
+    border-radius: 8px;
+}
+
+/* ===== PAGAMENTO ===== */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+/* ===== TOTAL ===== */
+.total-box {
+    font-size: 20px;
     font-weight: bold;
     text-align: right;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* BOTÃO FINAL */
+.finalizar {
+    width: 100%;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
 }
 </style>
 
@@ -122,36 +167,73 @@ header {
 
 <body>
 
-<header class="h1"> Meu Carrinho</header>
+<header>Meu Carrinho</header>
 
 <div id="lista"></div>
-<div id="total"></div>
 
-<button class="finalizar" onclick="finalizarCompra()">
-    Finalizar Compra
-</button>
+<div class="painel">
+
+    <!-- FRETE -->
+    <div class="box">
+        <h3>🚚 Calcular Frete</h3>
+
+        <div class="frete-input">
+            <input type="text" id="cep" placeholder="Digite seu CEP">
+            <button onclick="calcularFrete()">🔍</button>
+        </div>
+
+        <p id="freteValor">Frete: R$ 0.00</p>
+        <p class="prazo" id="prazoEntrega"></p>
+    </div>
+
+    <!-- CUPOM -->
+    <div class="box cupom-box">
+        <h3>🎟 Cupom</h3>
+        <input type="text" id="cupom" placeholder="Digite o cupom">
+        <button onclick="aplicarCupom()">Aplicar Cupom</button>
+        <p id="desconto">Desconto: R$ 0.00</p>
+    </div>
+
+    <!-- PAGAMENTO -->
+    <div class="box">
+        <h3>💳 Pagamento</h3>
+        <select id="pagamento">
+            <option value="credito">Cartão de Crédito</option>
+            <option value="debito">Cartão de Débito</option>
+            <option value="pix">PIX</option>
+            <option value="boleto">Boleto</option>
+        </select>
+    </div>
+
+    <!-- TOTAL -->
+    <div class="box total-box">
+        <span id="total">Total: R$ 0.00</span>
+    </div>
+
+    <button class="finalizar" onclick="finalizarCompra()">
+        Finalizar Compra
+    </button>
+
+</div>
 
 <script>
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
+let frete = 0;
+let desconto = 0;
+
+/* RENDER */
 function renderizarCarrinho() {
     let lista = document.getElementById("lista");
-    let total = 0;
-
     lista.innerHTML = "";
 
-    if (carrinho.length === 0) {
-        lista.innerHTML = "<p style='text-align:center;'>Seu carrinho está vazio 🛒</p>";
-        document.getElementById("total").innerHTML = "";
-        return;
-    }
+    let subtotal = 0;
 
     carrinho.forEach((p, index) => {
-
         let preco = parseFloat(p.preco) || 0;
         let qtd = parseInt(p.quantidade) || 1;
 
-        total += preco * qtd;
+        subtotal += preco * qtd;
 
         lista.innerHTML += `
             <div class="card">
@@ -159,35 +241,114 @@ function renderizarCarrinho() {
                 <div class="conteudo">
                     <div class="nome">${p.nome}</div>
                     <div class="preco">R$ ${preco.toFixed(2)}</div>
-                    <div class="qtd">Quantidade: ${qtd}</div>
-                    <button class="remover" onclick="removerItem(${index})">
-                        Remover
-                    </button>
+                    <div>Qtd: ${qtd}</div>
+                    <button class="remover" onclick="removerItem(${index})">Remover</button>
                 </div>
             </div>
         `;
     });
 
-    document.getElementById("total").innerHTML =
+    atualizarTotal(subtotal);
+}
+
+/* TOTAL */
+function atualizarTotal(subtotal) {
+
+    if (subtotal >= 150) {
+        frete = 0;
+        document.getElementById("freteValor").innerText = "Frete: GRÁTIS 🎉";
+    }
+
+    let total = subtotal + frete - desconto;
+
+    document.getElementById("total").innerText =
         "Total: R$ " + total.toFixed(2);
 }
 
+/* REMOVER */
 function removerItem(index) {
     carrinho.splice(index, 1);
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
     renderizarCarrinho();
 }
 
-function finalizarCompra() {
-    if (carrinho.length === 0) {
-        alert("Seu carrinho está vazio!");
+/* CALCULAR SUBTOTAL */
+function calcularSubtotal() {
+    let subtotal = 0;
+
+    carrinho.forEach(p => {
+        let preco = parseFloat(p.preco) || 0;
+        let qtd = parseInt(p.quantidade) || 1;
+        subtotal += preco * qtd;
+    });
+
+    return subtotal;
+}
+
+/* FRETE */
+function calcularFrete() {
+    const cep = document.getElementById("cep").value;
+
+    if (cep.length < 8) {
+        alert("Digite um CEP válido");
         return;
     }
 
-    alert("Compra finalizada com sucesso! 🎉");
+    let subtotal = calcularSubtotal();
 
-    carrinho = [];
+    if (subtotal >= 150) {
+        frete = 0;
+        document.getElementById("freteValor").innerText = "Frete: GRÁTIS 🎉";
+        document.getElementById("prazoEntrega").innerText = "Entrega: 2 a 4 dias";
+    } else if (cep.startsWith("13")) {
+        frete = 10;
+        document.getElementById("prazoEntrega").innerText = "Entrega: 1 a 3 dias";
+    } else if (cep.startsWith("01")) {
+        frete = 20;
+        document.getElementById("prazoEntrega").innerText = "Entrega: 2 a 4 dias";
+    } else {
+        frete = 30;
+        document.getElementById("prazoEntrega").innerText = "Entrega: 3 a 7 dias";
+    }
+
+    document.getElementById("freteValor").innerText =
+        "Frete: R$ " + frete.toFixed(2);
+
+    renderizarCarrinho();
+}
+
+/* CUPOM */
+function aplicarCupom() {
+    const cupom = document.getElementById("cupom").value.toUpperCase();
+
+    if (cupom === "DESCONTO10") {
+        desconto = 10;
+    } else if (cupom === "PRIMEIRACOMPRA") {
+        desconto = 20;
+    } else {
+        desconto = 0;
+        alert("Cupom inválido");
+    }
+
+    document.getElementById("desconto").innerText =
+        "Desconto: R$ " + desconto.toFixed(2);
+
+    renderizarCarrinho();
+}
+
+/* FINALIZAR */
+function finalizarCompra() {
+    if (carrinho.length === 0) {
+        alert("Carrinho vazio!");
+        return;
+    }
+
+    const pagamento = document.getElementById("pagamento").value;
+
+    alert("Compra finalizada via " + pagamento + " 🎉");
+
     localStorage.removeItem("carrinho");
+    carrinho = [];
     renderizarCarrinho();
 }
 
