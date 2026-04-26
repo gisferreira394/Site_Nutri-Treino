@@ -147,15 +147,19 @@ function renderizarCarrinho() {
     }
 
     carrinho.forEach((p, index) => {
-        total += p.preco * p.quantidade;
+
+        let preco = parseFloat(p.preco) || 0;
+        let qtd = parseInt(p.quantidade) || 1;
+
+        total += preco * qtd;
 
         lista.innerHTML += `
             <div class="card">
                 <img src="${p.imagem}">
                 <div class="conteudo">
                     <div class="nome">${p.nome}</div>
-                    <div class="preco">R$ ${p.preco}</div>
-                    <div class="qtd">Quantidade: ${p.quantidade}</div>
+                    <div class="preco">R$ ${preco.toFixed(2)}</div>
+                    <div class="qtd">Quantidade: ${qtd}</div>
                     <button class="remover" onclick="removerItem(${index})">
                         Remover
                     </button>
