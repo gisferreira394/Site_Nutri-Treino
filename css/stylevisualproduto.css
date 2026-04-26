@@ -406,55 +406,55 @@ a{color:inherit;text-decoration:none}
 .nav-list a:hover::after {
     transform: scaleX(1);
 }
-
-/* ====== RODAPÉ ====== */
-
 .footer {
     background-color: #387856;
     color: #ffffff;
-    padding: 40px;
-     text-align: center;
+    padding: 40px 20px;
     font-family: Arial, sans-serif;
 }
 
-
-
+/* CONTAINER CENTRALIZADO */
 .footer-container {
     max-width: 1100px;
+    margin: 0 auto; /* CENTRALIZA */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+    text-align: center;
+}
+
+/* COLUNAS CENTRALIZADAS */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Títulos */
 .footer-col h3 {
-    margin: 0 0 10px 0;
+    margin-bottom: 10px;
     font-size: 22px;
-    font-weight: bold;
 }
 
 .footer-col h4 {
-    margin: 0 0 12px 0;
+    margin-bottom: 12px;
     font-size: 18px;
-    font-weight: bold;
 }
 
 /* Texto */
 .footer-col p {
-    margin: 0;
-    line-height: 1.5;
     font-size: 15px;
+    line-height: 1.5;
 }
 
+/* Listas */
 .footer-col ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 .footer-col ul li {
     margin-bottom: 8px;
-    font-size: 15px;
 }
 
 .footer-col ul li a {
@@ -466,12 +466,24 @@ a{color:inherit;text-decoration:none}
     text-decoration: underline;
 }
 
-/* Ícones sociais */
+/* Contato */
+.contact li {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Redes sociais */
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
 .social a {
     font-size: 22px;
-    margin-right: 12px;
-    text-decoration: none;
     color: #ffffff;
+    text-decoration: none;
     transition: 0.3s;
 }
 
@@ -488,63 +500,17 @@ a{color:inherit;text-decoration:none}
     border-top: 1px solid rgba(255,255,255,0.3);
 }
 
-/* ===== Responsivo ===== */
+/* RESPONSIVO */
 @media (max-width: 780px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
     }
 }
 
 @media (max-width: 480px) {
     .footer-container {
         grid-template-columns: 1fr;
-        text-align: center;
     }
-
-    .social a {
-        margin-right: 8px;
-    }
-}
-
-.titulo {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.treinos {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  border: 2px solid #000;
-}
-
-.dia {
-  border-left: 2px solid #000;
-}
-
-.dia:first-child {
-  border-left: none;
-}
-
-.titulo-dia {
-  background-color: #4f8b63;
-  color: #fff;
-  text-align: center;
-  font-weight: bold;
-  padding: 10px;
-}
-
-textarea {
-  width: 100%;
-  height: 220px;
-  border: none;
-  padding: 10px;
-  resize: none;
-  font-size: 14px;
-}
-
-textarea:focus {
-  outline: none;
 }
 
 .salvar {
