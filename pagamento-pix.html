@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pagamento PIX</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    text-align: center;
+}
+
+header {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.box {
+    background: white;
+    margin: 30px auto;
+    padding: 25px;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.valor {
+    font-size: 22px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.qr {
+    margin: 20px 0;
+}
+
+.qr img {
+    width: 250px;
+}
+
+.chave {
+    background: #f1f1f1;
+    padding: 10px;
+    border-radius: 6px;
+    word-break: break-all;
+    font-weight: bold;
+}
+
+.botao {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>Pagamento via PIX</header>
+
+<div class="box">
+    <p>Total a pagar:</p>
+    <div class="valor" id="valorPix">R$ 0,00</div>
+
+    <div class="qr">
+        <!-- COLOQUE A IMAGEM DO QR CODE PIX AQUI -->
+        <img src="qrcode-pix.png" alt="QR Code PIX">
+    </div>
+
+    <p>Ou pague com a chave PIX:</p>
+
+    <div class="chave" id="chavePix">
+        123e4567-e89b-12d3-a456-426614174000
+    </div>
+
+    <button class="botao" onclick="copiarPix()">
+        Copiar chave PIX
+    </button>
+</div>
+
+<script>
+const total = localStorage.getItem("totalPix");
+
+if (total) {
+    document.getElementById("valorPix").innerText = "R$ " + total;
+}
+
+function copiarPix() {
+    const chave = document.getElementById("chavePix").innerText;
+    navigator.clipboard.writeText(chave);
+    alert("Chave PIX copiada ✅");
+}
+</script>
+
+</body>
+</html>

@@ -345,13 +345,24 @@ function finalizarCompra() {
 
     const pagamento = document.getElementById("pagamento").value;
 
+    // calcular total final
+    const subtotal = calcularSubtotal();
+    const totalFinal = subtotal + frete - desconto;
+
+    // salvar infos para a próxima página
+    localStorage.setItem("totalPix", totalFinal.toFixed(2));
+
+    if (pagamento === "pix") {
+        window.location.href = "pagamento-pix.html";
+        return;
+    }
+
     alert("Compra finalizada via " + pagamento + " 🎉");
 
     localStorage.removeItem("carrinho");
     carrinho = [];
-    renderizarCarrinho();
-}
 
+}
 renderizarCarrinho();
 </script>
 
