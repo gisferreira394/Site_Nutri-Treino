@@ -15,7 +15,7 @@ body {
 
 /* HEADER */
 header {
-    background: #4CAF50;
+    background: #387856;
     color: white;
     padding: 15px;
     text-align: center;
@@ -152,7 +152,7 @@ select {
 /* BOTÃO FINAL */
 .finalizar {
     width: 100%;
-    background: #4CAF50;
+    background: #387856;
     color: white;
     padding: 15px;
     border: none;
@@ -161,6 +161,30 @@ select {
     margin-top: 10px;
     cursor: pointer;
 }
+/* ===== STATUS DO PEDIDO ===== */
+.status-box {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #e8f5e9;
+    border-left: 6px solid #387856;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.status-box h3 {
+    margin-top: 0;
+    color: #387856;
+}
+
+.status-box .linha {
+    margin: 6px 0;
+}
+
+.status-confirmado {
+    font-weight: bold;
+    color: #387856;
+}
+
 </style>
 
 </head>
@@ -169,6 +193,10 @@ select {
 
 <header>Meu Carrinho</header>
 
+<!-- STATUS DO PEDIDO -->
+<div id="statusPedido"></div>
+
+<div id="lista"></div>
 <div id="lista"></div>
 
 <div class="painel">
@@ -364,7 +392,36 @@ function finalizarCompra() {
 
 }
 renderizarCarrinho();
+
+function mostrarStatusPedido() {
+
+    const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+
+    if (pedidos.length === 0) return;
+
+    // pegar o último pedido
+    const pedido = pedidos[pedidos.length - 1];
+
+    const div = document.getElementById("statusPedido");
+
+    div.innerHTML = `
+        <div class="status-box">
+            <h3>📦 Status do Pedido</h3>
+            <div class="linha"><strong>Pedido:</strong> ${pedido.id}</div>
+            <div class="linha"><strong>Data:</strong> ${pedido.data}</div>
+            <div class="linha"><strong>Total:</strong> R$ ${pedido.total}</div>
+            <div class="linha status-confirmado">
+                Status: ${pedido.status}
+            </div>
+        </div>
+    `;
+}
+
+renderizarCarrinho();
+mostrarStatusPedido();
 </script>
+
+
 
 </body>
 </html>

@@ -15,7 +15,7 @@ body {
 }
 
 header {
-    background: #4CAF50;
+    background: #387856;
     color: white;
     padding: 15px;
     font-size: 22px;
@@ -33,7 +33,7 @@ header {
 
 .valor {
     font-size: 22px;
-    color: #4CAF50;
+    color: #387856;
     font-weight: bold;
 }
 
@@ -57,7 +57,7 @@ header {
     margin-top: 20px;
     padding: 12px;
     width: 100%;
-    background: #4CAF50;
+    background: #387856;
     color: white;
     border: none;
     border-radius: 8px;
@@ -76,13 +76,13 @@ header {
 
     <div class="qr">
         <!-- COLOQUE A IMAGEM DO QR CODE PIX AQUI -->
-        <img src="qrcode-pix.png" alt="QR Code PIX">
+        <img src="img/qrcode.jpg" alt="QR Code PIX">
     </div>
 
     <p>Ou pague com a chave PIX:</p>
 
     <div class="chave" id="chavePix">
-        123e4567-e89b-12d3-a456-426614174000
+        00020126360014BR.GOV.BCB.PIX0114+55199935479145204000053039865802BR5925Geovana da Silva Ferreira6009SAO PAULO62140510PT9ZC6sN9s6304EB64
     </div>
 
     <button class="botao" onclick="copiarPix()">
@@ -103,6 +103,50 @@ function copiarPix() {
     alert("Chave PIX copiada ✅");
 }
 </script>
+
+
+<button class="botao" onclick="confirmarPagamento()">
+  ✅ Já realizei o pagamento
+</button>
+
+
+<script>
+
+function confirmarPagamento() {
+
+    const confirmar = confirm(
+        "Você confirma que o pagamento Pix foi realizado?"
+    );
+
+    if (!confirmar) return;
+
+    const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    const total = localStorage.getItem("totalPix");
+
+    const pedido = {
+        id: "PED-" + Date.now(),
+        data: new Date().toLocaleDateString("pt-BR"),
+        status: "Pagamento confirmado",
+        total: total,
+        itens: carrinho
+    };
+
+    let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+    pedidos.push(pedido);
+
+    localStorage.setItem("pedidos", JSON.stringify(pedidos));
+
+    // limpar carrinho
+    localStorage.removeItem("carrinho");
+    localStorage.removeItem("totalPix");
+
+    window.location.href = "meus-pedidos.html";
+}
+</script>
+</script>
+
+
+
 
 </body>
 </html>
