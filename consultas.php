@@ -1,13 +1,20 @@
 <?php
 session_start();
-include "includes/conexao.php";
 
-$usuario_id = $_SESSION["usuario_id"];
+if (!isset($_SESSION["usuario_id"])) {
+    // não está logado
+    $naoLogado = true;
+} else {
+    $naoLogado = false;
 
-// busca dados físicos
-$sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
-$res = mysqli_query($conexao, $sql);
-$dados = mysqli_fetch_assoc($res);
+    include "includes/conexao.php";
+
+    $usuario_id = $_SESSION["usuario_id"];
+
+    $sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
+    $res = mysqli_query($conexao, $sql);
+    $dados = mysqli_fetch_assoc($res);
+}
 ?>
 
 <!DOCTYPE html>
@@ -84,10 +91,77 @@ button:hover {
     background: #c8f7c5;
     border-radius: 5px;
 }
+.login-alert {
+    width: 90%;        /* ocupa mais da tela no celular */
+    max-width: 400px;  /* limite no desktop */
+    margin: 80px auto; /* menos espaço em cima */
+    padding: 30px;
+    text-align: center;
+
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.login-alert h2 {
+    margin-bottom: 10px;
+}
+
+.login-alert p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.btn-login {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4c5fd5;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .login-alert {
+        width: 100%;          /* ocupa toda a tela */
+        max-width: none;      /* remove limite */
+        margin: 0;            /* tira espaço lateral */
+        border-radius: 0;     /* opcional: estilo app */
+        height: 100vh;        /* ocupa a tela inteira */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* centraliza conteúdo */
+        padding: 25px;
+    }
+
+    .login-alert h2 {
+        font-size: 88px;
+    }
+
+    .login-alert p {
+        font-size: 14px;
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 12px;
+    }
+}
 </style>
 </head>
 
 <body>
+
+<?php if ($naoLogado): ?>
+
+<div class="login-alert">
+    <h2>🔒 Acesso restrito</h2>
+    <p>Você precisa estar logado para acessar essa página.</p>
+    
+    <a href="login.php" class="btn-login">Fazer login</a>
+</div>
+
+<?php else: ?>
 
 <div class="container">
 
@@ -268,3 +342,4 @@ function gerarPlano() {
 
 </body>
 </html>
+<?php endif; ?>

@@ -216,7 +216,13 @@ $dados = mysqli_fetch_assoc($res);
         <input type="number" name="peso" value="<?php echo $dados['peso'] ?? ''; ?>" required>
     </div>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn-salvar">Salvar</button>
+
+    <button type="button" class="btn-sair" onclick="window.location.href='logout.php'">
+    Sair da conta
+</button>
+</form>
+</form>
 
 </form>
   
