@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>Pagamento PIX</title>
 
 <style>
@@ -74,19 +75,18 @@ header {
 <header>Pagamento via PIX</header>
 
 <div class="box">
-    <p>Total a pagar:</p>
+    <p>Total a pagar: R$ 200,00 </p>
     <div class="valor" id="valorPix"></div>
 
     <div class="qr">
         <!-- COLOQUE A IMAGEM DO QR CODE PIX AQUI -->
-        <img src="img/qrcode.jpg" alt="QR Code PIX">
+        <img src="img/qrcode200.jpeg" alt="QR Code PIX">
     </div>
 
     <p>Ou pague com a chave PIX:</p>
 
     <div class="chave" id="chavePix">
-        00020126360014BR.GOV.BCB.PIX0114+55199935479145204000053039865802BR5925Geovana da Silva Ferreira6009SAO PAULO62140510PT9ZC6sN9s6304EB64
-    </div>
+00020126360014BR.GOV.BCB.PIX0114+55199935479145204000053039865406200.005802BR5925Geovana da Silva Ferreira6009SAO PAULO62140510Q3Ceq9V4vP63048953    </div>
 
     <button class="botao" onclick="copiarPix()">
         Copiar chave PIX
@@ -116,11 +116,7 @@ function copiarPix() {
 <script>
 
 function confirmarPagamento() {
-
-    const confirmar = confirm(
-        "Você confirma que o pagamento Pix foi realizado?"
-    );
-
+    const confirmar = confirm("Você confirma que o pagamento Pix foi realizado?");
     if (!confirmar) return;
 
     const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
@@ -143,10 +139,12 @@ function confirmarPagamento() {
     localStorage.removeItem("carrinho");
     localStorage.removeItem("totalPix");
 
-    window.location.href = "meus-pedidos.html";
+    // redireciona para a página principal
+    window.location.href = "index.html";
 }
-</script>
 
+
+</script>
 
 
 
