@@ -289,29 +289,75 @@ background-color: #387856;
     height: auto;
   }
 
-  .topbar a {
+  .quick-icons {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    align-items: center;
+    gap: 6; /* controla aqui o espaço real */
   }
+
+  .quick-icons a {
+    padding: 0;       /* remove espaço interno */
+    margin: 0;        /* remove espaço externo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .quick-icons span {
+    display: none; /* esconde texto (se tiver) */
+  }
+
+  .quick-icons svg {
+  width: 18px;
+  height: 18px;
+  display: block;      /* evita espaço inline do svg */
+}
 
   .topbar {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .topbar a:first-child {
+    width: 60px;
+    flex-shrink: 0;
   }
 
+  /* LOGO MENOR */
   .logo {
-    max-width: 120px;
-    display: block;
-    margin: 0 auto; /* centraliza */
+    max-width: 70px;
+    max-height: 80px;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    flex-shrink: 0; /* NÃO deixa esmagar */
   }
 
+  /* BUSCA NO MEIO */
   .search {
+    flex: 1; /* ocupa espaço disponível */
+    margin: 0 10px;
+  }
+
+  .search input {
     width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  /* ÍCONES */
+  .quick-icons {
+    display: flex;
+    gap: 0px;
+  }
+
+  .quick-icons svg {
+    width: 18px;
+    height: 18px;
   }
 }
+
 
 
 .logo{
