@@ -88,49 +88,122 @@
 <!-- ===== MAIN – FUNDO VERDE ===== -->
 <main class="page-bg">
 
+<!-- BOTÃO PARA ABRIR -->
+<button class="btn-menu" onclick="abrirMenu()">
+  ☰ Treinos prontos
+</button>
+
+<!-- MENU TREINOS PRONTOS -->
+<div id="menu-treinos" class="menu-lateral">
+
+  <div class="menu-header">
+    🏋️ Treinos prontos
+  </div>
+
+  <!-- ESCOLHA FEM / MASC -->
+  <div class="tipo-toggle">
+    <button class="toggle feminino" onclick="selecionarTipo('feminino')">
+      ♀ Feminino
+    </button>
+    <button class="toggle masculino" onclick="selecionarTipo('masculino')">
+      ♂ Masculino
+    </button>
+  </div>
+
+
+  <!-- treinos femininos -->
+  <div id="treinos-feminino" class="lista-treinos hidden">
+    <button onclick="usarTreino(treinosFemininos.posterior)">Treino A: Posterior + Glúteo</button>
+    <button onclick="usarTreino(treinosFemininos.superior)">Treino B: Superior completo</button>
+    <button onclick="usarTreino(treinosFemininos.quadríceps)">Treino C: Quadríceps</button>
+    <button onclick="usarTreino(treinosFemininos.perna)">Treino D: Perna completo</button>
+    <button onclick="usarTreino(treinosFemininos.cardio)">Treino E: Cardio</button>
+  </div>
+
+  <!-- treinos masculinos -->
+  <div id="treinos-masculino" class="lista-treinos hidden">
+    <button onclick="usarTreino(treinosMasculinos.peito)">Treino A: Peito + Bíceps</button>
+    <button onclick="usarTreino(treinosMasculinos.costas)">Treino B:Costas</button>
+    <button onclick="usarTreino(treinosMasculinos.biceps)">Treino C:Bíceps</button>
+    <button onclick="usarTreino(treinosMasculinos.ombro)">Treino D:Ombro + Tríceps</button>
+    <button onclick="usarTreino(treinosFemininos.cardio)">Treino E: Cardio</button>
+  </div>
+
+  <button class="fechar" onclick="fecharMenu()">Fechar</button>
+</div>
+
   <!-- BLOCO BRANCO DO PLANO DE TREINO -->
   <section class="treino-box">
 
     <h2 class="titulo">Personalização de treinos</h2>
 
-<div class="treinos">
+<div class="treinos planner">
 
   <div class="dia">
-    <div class="titulo-dia">Segunda</div>
-    <textarea id="segunda"></textarea>
+    <div class="titulo-dia">💪 Segunda</div>
+    <textarea
+      id="segunda"
+      placeholder="Clique para adicionar treino"
+      onclick="definirDia('segunda')"
+    ></textarea>
   </div>
 
   <div class="dia">
-    <div class="titulo-dia">Terça</div>
-    <textarea id="terca"></textarea>
+    <div class="titulo-dia">🔥 Terça</div>
+    <textarea
+      id="terca"
+      placeholder="Clique para adicionar treino"
+      onclick="definirDia('terca')"
+    ></textarea>
   </div>
 
   <div class="dia">
-    <div class="titulo-dia">Quarta</div>
-    <textarea id="quarta"></textarea>
+    <div class="titulo-dia">🧘 Quarta</div>
+    <textarea
+      id="quarta"
+      placeholder="Clique para adicionar treino"
+      onclick="definirDia('quarta')"
+    ></textarea>
   </div>
 
   <div class="dia">
-    <div class="titulo-dia">Quinta</div>
-    <textarea id="quinta"></textarea>
+    <div class="titulo-dia">💪 Quinta</div>
+    <textarea
+      id="quinta"
+      placeholder="Clique para adicionar treino"
+      onclick="definirDia('quinta')"
+    ></textarea>
   </div>
 
   <div class="dia">
-    <div class="titulo-dia">Sexta</div>
-    <textarea id="sexta"></textarea>
+    <div class="titulo-dia">🔥 Sexta</div>
+    <textarea
+      id="sexta"
+      placeholder="Clique para adicionar treino"
+      onclick="definirDia('sexta')"
+    ></textarea>
   </div>
 
   <div class="dia">
-    <div class="titulo-dia">Sábado</div>
-    <textarea id="sabado"></textarea>
+    <div class="titulo-dia">🙂 Sábado</div>
+    <textarea
+      id="sabado"
+      placeholder="Clique para adicionar treino"
+      onclick="definirDia('sabado')"
+    ></textarea>
   </div>
 
   <div class="dia">
-    <div class="titulo-dia">Domingo</div>
-    <textarea id="domingo"></textarea>
+    <div class="titulo-dia">😴 Domingo</div>
+    <textarea
+      id="domingo"
+      placeholder="Dia de descanso ou cardio leve"
+      onclick="definirDia('domingo')"
+    ></textarea>
   </div>
 
 </div>
+
 
 <div class="botoes">
 <button class="salvar" onclick="salvarTreinos()">Salvar treinos</button>
