@@ -303,7 +303,7 @@ background: #ffffff;
 
 /* Selecionado */
 .opcao.ativa {
-  background: #00a859;
+  background: #4c915c;
   color: white;
 }
 
@@ -314,7 +314,7 @@ background: #ffffff;
 /* Botão */
 button {
   margin-top: 20px;
-  background: #00a859;
+  background: #4c915c;
   color: white;
   border: none;
   padding: 14px 30px;
