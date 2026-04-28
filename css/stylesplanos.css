@@ -399,3 +399,91 @@ transform: translateY(-40%);
         margin-right: 8px;
     }
 }
+
+.btn-assinar {
+  display: inline-block;
+  background: #2f7d48;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.btn-assinar:hover {
+  background: #25663a;
+}
+
+/* ===== ANIMAÇÃO DE ENTRADA DOS PLANOS ===== */
+.cards .card {
+  animation: subirFade 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* Delay escalonado */
+.cards .card:nth-child(1) { animation-delay: 0.1s; }
+.cards .card:nth-child(2) { animation-delay: 0.25s; }
+.cards .card:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes subirFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* DESTAQUE PLANO PLUS */
+.cards .card:nth-child(2) {
+  border: 3px solid #4f8b63;
+  position: relative;
+}
+
+/* Selo */
+.cards .card:nth-child(2)::before {
+  content: "Mais popular";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #4f8b63, #2f7d48);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn-assinar {
+  display: inline-block;
+  background: linear-gradient(135deg, #4f8b63, #2f7d48);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-assinar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(47, 125, 72, 0.4);
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #2f7d48;
+}

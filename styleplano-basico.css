@@ -1,0 +1,131 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e9f5ee, #f6fbf8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CONTAINER */
+.container {
+  padding: 20px;
+}
+
+/* CARD DO PLANO */
+.plano-card {
+  background: #ffffff;
+  max-width: 420px;
+  width: 100%;
+  padding: 35px 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  text-align: center;
+  animation: surgir 0.8s ease;
+}
+
+/* ANIMAÇÃO */
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* BADGE */
+.badge {
+  display: inline-block;
+  background: #2f7d48;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* TÍTULO */
+.plano-card h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #1c1c1c;
+}
+
+/* PREÇO */
+.preco {
+  font-size: 22px;
+  color: #2f7d48;
+  margin-bottom: 15px;
+}
+
+.preco strong {
+  font-size: 40px;
+}
+
+.preco span {
+  font-size: 14px;
+  color: #666;
+}
+
+/* DESCRIÇÃO */
+.descricao {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* BENEFÍCIOS */
+.beneficios {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.beneficios li {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #2c6848;
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-principal {
+  display: block;
+  background: linear-gradient(135deg, #4f8b63, #2f7d48);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 15px;
+}
+
+.btn-principal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(47, 125, 72, 0.35);
+}
+
+/* VOLTAR */
+.voltar {
+  display: inline-block;
+  color: #2f7d48;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
