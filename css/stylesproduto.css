@@ -12,7 +12,11 @@
 
 /* ===== Reset básico ===== */
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{
+  height:100%;
+  width: 100%;
+  overflow-x: hidden;
+}
 body{
   margin:0;
   font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -23,8 +27,15 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .container{max-width:var(--container);padding-inline:20px;margin-inline:auto}
 
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
 /* ===== Header com textura ===== */
 .site-header{
+  width: 100%;
   color:#fff;
   background:
     /* granulado leve */
@@ -105,15 +116,31 @@ color: white;
 
 /* Menu principal */
 .main-nav{
-  display:flex;gap:26px;align-items:center;
-  margin-top:14px;margin-bottom:18px;
-  font-weight:500;
-  opacity:.95;
+  display: flex;
+  flex-wrap: wrap; /* permite quebrar linha */
+  justify-content: center;
+  gap: 10px;
+}
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 .main-nav a{padding:8px 0}
 
+.nav-lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+
 /* ===== Hero ===== */
 .hero{
+  width: 100%;
   display:grid;
   grid-template-columns:1.1fr .9fr;
   gap:26px;
@@ -257,6 +284,85 @@ color: white;
     grid-template-columns:1fr;
   }
   .hero-media img{width:100%}
+}
+
+@media (max-width: 480px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-media {
+    width: 100%;
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: auto;
+  }
+
+  .quick-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* controla aqui o espaço real */
+  }
+
+  .quick-icons a {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto; /* garante que não herde largura */
+}
+
+  .quick-icons span {
+    display: none; /* esconde texto (se tiver) */
+  }
+
+  .quick-icons svg {
+  width: 18px;
+  height: 18px;
+  display: block;      /* evita espaço inline do svg */
+}
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .logo-link {
+  width: 60px;
+  flex-shrink: 0;
+}
+
+  /* LOGO MENOR */
+  .logo {
+    max-width: 70px;
+    max-height: 80px;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    flex-shrink: 0; /* NÃO deixa esmagar */
+  }
+
+  /* BUSCA NO MEIO */
+  .search {
+    flex: 1; /* ocupa espaço disponível */
+    margin: 0 10px;
+  }
+
+  .search input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+
+  .quick-icons svg {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .logo{

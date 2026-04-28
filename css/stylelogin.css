@@ -104,3 +104,58 @@ button:hover {
     margin-bottom: 15px;
     font-weight: bold;
 }
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 20px;
+        align-items: flex-start; /* evita ficar colado no meio em telas pequenas */
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .login {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .icon {
+        font-size: 35px;
+        margin-bottom: 8px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+
+    .input-box input {
+        font-size: 15px;
+        padding: 12px 8px;
+    }
+
+    .input-box label {
+        font-size: 13px;
+    }
+
+    .options {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+        text-align: center;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 15px;
+        border-radius: 6px;
+    }
+
+    .erro-msg,
+    .erro {
+        font-size: 13px;
+    }
+}

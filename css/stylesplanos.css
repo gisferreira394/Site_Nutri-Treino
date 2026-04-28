@@ -16,12 +16,17 @@
   --radius:14px;
   --container:1100px;
 }
-
+html,body{
+  height:100%;
+  width: 100%;
+  overflow-x: hidden;
+}
 
 /* ========= HEADER ========= */
 .header {
-  color:#fff;
-  background:
+    width: 100%;
+    color:#fff;
+    background:
     /* granulado leve */
     radial-gradient(1.2px 1.2px at 10% 20%, rgba(255,255,255,.08) 0 50%, transparent 51%) 0 0/6px 6px,
     radial-gradient(1.2px 1.2px at 70% 30%, rgba(255,255,255,.08) 0 50%, transparent 51%) 0 0/7px 7px,
@@ -42,7 +47,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    gap:16px;
+    padding-top: 14px;
+    padding-right: 7px;
 }
 
 .logo{
@@ -52,15 +59,23 @@
 }
 
 /* ===== ÍCONES ===== */
-.icons {
+.quick-icons {
     display: flex;
     align-items: center;
     gap: 18px;
 }
 
+.link-usuario{
+    color: white;       /* herda branco do header */
+  text-decoration: none;
+}
 
 .link-cesta {
   color: inherit;       /* herda branco do header */
+  text-decoration: none;
+}
+.link-favorito{
+    color: inherit;       /* herda branco do header */
   text-decoration: none;
 }
 
@@ -75,37 +90,64 @@
 }
 
 /* ===== MENU PRINCIPAL ===== */
-.menu {
-    width: 100%;
-    display: flex;
-    justify-content: center;
 
-    /* 🔼 MENU MAIS PARA CIMA */
-    margin-top: 6px;
+.main-nav{
+  display: flex;
+  flex-wrap: wrap; /* permite quebrar linha */
+  justify-content: center;
+  gap: 10px;
+}
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.main-nav a{padding:8px 0}
+/* Reset mínimo do menu */
+.main-nav { padding: 14px 20px; }
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 40px; /* Espaçamento entre opções */
 }
 
-.menu ul {
+.nav-link {
+  text-decoration: none;
+  color: #ffffff;       /* branco para o topo verde */
+  font-weight: 600;
+  font-size: 16px;
+  position: relative;
+  padding: 8px 0;
+}
+
+.main-nav {
+    width: 100%;              /* ocupa toda a largura */
+    display: flex;
+    justify-content: center; /* ALINHA O MENU À DIREITA */
+    padding: 14px 20px;
+}
+
+.nav-list {
     list-style: none;
     display: flex;
-    gap: 40px;
+    gap: 40px;                 /* espaço entre itens */
     margin: 0;
     padding: 0;
 }
 
-.menu a {
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
+.nav-list a {
     text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 0;
     position: relative;
-
-    /* 🔼 TEXTO MAIS “COLADO” NO TOPO */
-    padding: px 0;
-    line-height: 8;
 }
 
-/* Linha animada no hover */
-.menu a::after {
+.nav-list a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -118,7 +160,7 @@
     transition: transform .2s ease;
 }
 
-.menu a:hover::after {
+.nav-list a:hover::after {
     transform: scaleX(1);
 }
 
@@ -183,7 +225,7 @@ button {
     width: 250px;
     height: 47px;
 
-    padding: 0 20px;
+    padding: 0 10px;
     border-radius: 999px;
 
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -398,6 +440,85 @@ transform: translateY(-40%);
     .social a {
         margin-right: 8px;
     }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-media {
+    width: 100%;
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: auto;
+  }
+
+  .quick-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* controla aqui o espaço real */
+  }
+
+  .quick-icons a {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto; /* garante que não herde largura */
+}
+
+  .quick-icons span {
+    display: none; /* esconde texto (se tiver) */
+  }
+
+  .quick-icons svg {
+  width: 18px;
+  height: 18px;
+  display: block;      /* evita espaço inline do svg */
+}
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  .logo-link {
+  width: 60px;
+  flex-shrink: 0;
+}
+
+  /* LOGO MENOR */
+  .logo {
+    max-width: 70px;
+    max-height: 80px;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    flex-shrink: 0; /* NÃO deixa esmagar */
+  }
+
+  /* BUSCA NO MEIO */
+  .search {
+    flex: 1; /* ocupa espaço disponível */
+    margin: 0 10px;
+  }
+
+  .search input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+
+  .quick-icons svg {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .btn-assinar {

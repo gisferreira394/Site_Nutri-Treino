@@ -292,17 +292,17 @@ background-color: #387856;
   .quick-icons {
     display: flex;
     align-items: center;
-    gap: 6; /* controla aqui o espaço real */
+    gap: 6px; /* controla aqui o espaço real */
   }
 
   .quick-icons a {
-    padding: 0;       /* remove espaço interno */
-    margin: 0;        /* remove espaço externo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-  }
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto; /* garante que não herde largura */
+}
 
   .quick-icons span {
     display: none; /* esconde texto (se tiver) */
@@ -320,10 +320,10 @@ background-color: #387856;
     justify-content: space-between;
     gap: 6px;
   }
-  .topbar a:first-child {
-    width: 60px;
-    flex-shrink: 0;
-  }
+  .logo-link {
+  width: 60px;
+  flex-shrink: 0;
+}
 
   /* LOGO MENOR */
   .logo {
@@ -346,11 +346,6 @@ background-color: #387856;
     font-size: 14px;
   }
 
-  /* ÍCONES */
-  .quick-icons {
-    display: flex;
-    gap: 0px;
-  }
 
   .quick-icons svg {
     width: 18px;

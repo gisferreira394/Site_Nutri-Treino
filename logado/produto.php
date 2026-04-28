@@ -24,7 +24,7 @@ $dados = mysqli_fetch_assoc($res);
    <header class="site-header">
     <div class="topbar container">
      
-       <a href="index.html">
+       <a href="usuariologado.php" class="logo-link">
     <img src="../img/logonutri.png" alt="Logo" class="logo">
 </a>
 

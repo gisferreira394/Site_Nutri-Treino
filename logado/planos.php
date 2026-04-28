@@ -27,7 +27,7 @@ $dados = mysqli_fetch_assoc($res);
     <div class="header-top">
 
         <!-- LOGO -->
-        <a href="usuariologado.php">
+        <a href="usuariologado.php" class="logo-link">
     <img src="../img/logonutri.png" alt="Logo" class="logo">
 </a>
 
@@ -44,10 +44,9 @@ $dados = mysqli_fetch_assoc($res);
     </button>
 </form>
 
-      <nav class="quick-icons" aria-label="Acesso rápido">
 
         <!-- ICONES -->
-        <div class="icons">
+        <nav class="quick-icons" aria-label="Acesso rápido">
 
             <a href="#" onclick="abrirPainel()"> 
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
@@ -80,18 +79,17 @@ $dados = mysqli_fetch_assoc($res);
                 <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-8.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
             </svg>
 
-        </div>
-
+        </nav>
     </div>
 
     <!-- MENU -->
-    <nav class="menu">
-        <ul>
-            <li><a href="../consultas.php">Consultas</a></li>
-            <li><a href="treinos.php">Treinos</a></li>
-            <li><a href="produto.php">Produtos</a></li>
-            <li><a href="gympass.php">Buscar Academias</a></li>
-            <li><a href="planos.php">Planos</a></li>
+    <nav class="main-nav" aria-label="Principal">
+        <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link" href="../consultas.php">Consultas</a></li>
+            <li class="nav-item"><a class="nav-link"href="treinos.php">Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="produto.php">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="gympass.php">Buscar Academias</a></li>
+            <li class="nav-item"><a class="nav-link" href="planos.php">Planos</a></li>
         </ul>
     </nav>
 

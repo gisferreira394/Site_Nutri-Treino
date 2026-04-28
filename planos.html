@@ -15,7 +15,7 @@
   <div class="header-top">
 
     <!-- LOGO -->
-    <a href="index.html">
+    <a href="index.html" class="logo-link">
       <img src="img/logonutri.png" alt="Logo Nutri & Treino" class="logo">
     </a>
 
@@ -31,42 +31,59 @@
     </form>
 
     <!-- ÍCONES -->
-    <div class="icons">
-
-      <a href="login.php" class="icon-text">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20 21a8 8 0 0 0-16 0"></path>
-          <circle cx="12" cy="7" r="4"></circle>
-        </svg>
-        <span>Minha conta</span>
-      </a>
-
-      <a href="carrinho.html" class="link-cesta">
-        <svg class="icone-cesta" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M6 2h12l2 7H4l2-7Z"></path>
-          <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
-        </svg>
-      </a>
-
-      <a href="favoritos.html" class="link-favorito">
-        <svg width="22" height="22" stroke="white" stroke-width="2" fill="none" viewBox="0 0 24 24">
-          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-8.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
-        </svg>
-      </a>
-
+    <nav class="quick-icons" aria-label="Acesso rápido">
+        
+          <!-- ícone usuário -->
+          <a href="login.php" class="link-usuario"> 
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21a8 8 0 0 0-16 0"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Minha conta</span>
+        </a>
+        
+          <a href="carrinho.html" class="link-cesta" aria-label="Carrinho de compras">
+  <svg
+    class="icone-cesta"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true">
+    
+    <path d="M6 2h12l2 7H4l2-7Z"></path>
+    <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
+  </svg>
+</a>
+        </a>
+    
+          <!-- ícone coração -->
+           <a href="favoritos.html" class="link-favorito" aria-label="favoritos">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-8.6 1-1a5.5 5.5 0 0 0 0-7.8Z"></path>
+          </svg>
+        </a>
+      </nav>
     </div>
-  </div>
 
-  <!-- MENU -->
-  <nav class="menu">
-    <ul>
-      <li><a href="consultas.php">Consultas</a></li>
-      <li><a href="treinos.html">Treinos</a></li>
-      <li><a href="produto.html">Produtos</a></li>
-      <li><a href="gympass.html">Buscar Academias</a></li>
-      <li><a href="planos.html">Planos</a></li>
-    </ul>
-  </nav>
+
+    
+  <nav class="main-nav" aria-label="Principal">
+        <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link" href="consultas.php">Consultas</a></li>
+            <li class="nav-item"><a class="nav-link"href="treinos.html">Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="produto.html">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="gympass.html">Buscar Academias</a></li>
+            <li class="nav-item"><a class="nav-link" href="planos.html">Planos</a></li>
+        </ul>
+    </nav>
+  </header>
 
 </header>
 
