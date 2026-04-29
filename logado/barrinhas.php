@@ -1,10 +1,10 @@
 <?php
 session_start();
-include "../includes/conexao.php";
+include "includes/conexao.php";
 
 $usuario_id = $_SESSION["usuario_id"];
 
-$sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
+$sql = "SELECT * FROM produtos";
 $res = mysqli_query($conexao, $sql);
 
 $dados = mysqli_fetch_assoc($res);

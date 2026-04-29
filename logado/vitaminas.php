@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../includes/conexao.php";
+include "includes/conexao.php";
 
 $usuario_id = $_SESSION["usuario_id"];
 
@@ -16,15 +16,15 @@ $dados = mysqli_fetch_assoc($res);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitaminas</title>
-    <link rel="stylesheet" href="../css/styleswhey.css">
+    <link rel="stylesheet" href="css/styleswhey.css">
 </head>
 <body>
 
    <header class="site-header">
     <div class="topbar container">
      
-       <a href="usuariologado.php" class="logo-link">
-    <img src="../img/logonutri.png" alt="Logo" class="logo">
+       <a href="index.html" class="logo-link">
+    <img src="img/logonutri.png" alt="Logo" class="logo">
 </a>
 
       <form class="search" onsubmit="return buscarProduto(event)">
@@ -98,11 +98,11 @@ $dados = mysqli_fetch_assoc($res);
 <script>
   // produtos simulados
   const produtos = [
-    { nome: "Whey Protein", url: "whey.php" },
-    { nome: "Creatina", url: "creatina.php" },
-    { nome: "vitaminas", url: "vitaminas.php" },
-    { nome: "Pré-treino", url: "pretreino.php" },
-    { nome: "barrinhas", url: "barrinhas.php" }
+    { nome: "Whey Protein", url: "whey.html" },
+    { nome: "Creatina", url: "creatina.html" },
+    { nome: "vitaminas", url: "vitaminas.html" },
+    { nome: "Pré-treino", url: "pretreino.html" },
+    { nome: "barrinhas", url: "barrinhas.html" }
   ];
 
   const campoBusca = document.getElementById("campoBusca");
@@ -140,16 +140,16 @@ $dados = mysqli_fetch_assoc($res);
       <nav class="quick-icons" aria-label="Acesso rápido">
         
           <!-- ícone usuário -->
-          <a href="#" onclick="abrirPainel()"> 
+          <a href="login.php"> 
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21a8 8 0 0 0-16 0"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
+          <span>Minha conta</span>
         </a>
         
-         <!-- ícone sacola -->
-          <a href="../carrinho.php" class="link-cesta" aria-label="Carrinho de compras">
+         <a href="carrinho.html" class="link-cesta" aria-label="Carrinho de compras">
   <svg
     class="icone-cesta"
     width="22"
@@ -166,10 +166,10 @@ $dados = mysqli_fetch_assoc($res);
     <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
   </svg>
 </a>
+        </a>
     
           <!-- ícone coração -->
- <a href="../favoritos.html" class="link-favorito" aria-label="favoritos">
-
+           <a href="favoritos.html" class="link-favorito" aria-label="favoritos">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-8.6 1-1a5.5 5.5 0 0 0 0-7.8Z"></path>
@@ -182,11 +182,11 @@ $dados = mysqli_fetch_assoc($res);
     
   <nav class="main-nav" aria-label="Principal">
         <ul class="nav-list">
-            <li class="nav-item"><a class="nav-link" href="../consultas.php">Consultas</a></li>
-            <li class="nav-item"><a class="nav-link"href="treinos.php">Treinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="produto.php">Produtos</a></li>
-            <li class="nav-item"><a class="nav-link" href="gympass.php">Buscar Academias</a></li>
-            <li class="nav-item"><a class="nav-link" href="planos.php">Planos</a></li>
+            <li class="nav-item"><a class="nav-link" href="consultas.html">Consultas</a></li>
+            <li class="nav-item"><a class="nav-link"href="treinos.html">Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="produto.html">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="gympass.html">Buscar Academias</a></li>
+            <li class="nav-item"><a class="nav-link" href="planos.html">Planos</a></li>
         </ul>
     </nav>
 
@@ -196,11 +196,11 @@ $dados = mysqli_fetch_assoc($res);
 
     <nav class="categoria">
        <ul class="nav-lists">
-            <li class="nav-item"><a class="nav-link" href="whey.php">Whey</a></li>
-            <li class="nav-item"><a class="nav-link"href="pretreino.php">Pré-Treinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="barrinhas.php">Barrinhas</a></li>
-            <li class="nav-item"><a class="nav-link" href="vitaminas.php">Vitaminas</a></li>
-            <li class="nav-item"><a class="nav-link" href="creatina.php">Creatina</a></li>
+            <li class="nav-item"><a class="nav-link" href="whey.html">Whey</a></li>
+            <li class="nav-item"><a class="nav-link"href="pretreino.html">Pré-Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="barrinhas.html">Barrinhas</a></li>
+            <li class="nav-item"><a class="nav-link" href="vitaminas.html">Vitaminas</a></li>
+            <li class="nav-item"><a class="nav-link" href="creatina.html">Creatina</a></li>
         </ul>
     </nav>
  
@@ -215,12 +215,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 1 -->
        <div class="card">
-            <img src="../imgvitamina/vitaminaA.png">  
+            <img src="imgvitamina/vitaminaA.png">  
              <p class="titulo">Vitamina A</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 40,00 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina A&preco=94.90&img=imgvitamina/vitaminaA.png&desc=Vitamina A">
+       href="paginadoproduto.html?nome=Vitamina A&preco=40,00&img=imgvitamina/vitaminaA.png&desc=Vitamina A">
         Comprar
     </a>
             </button>
@@ -228,12 +228,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 2 -->
         <div class="card">
-            <img src="../imgvitamina/vitaminab1.jpeg">  
+            <img src="imgvitamina/vitaminab1.jpeg">  
              <p class="titulo">Vitamina B1</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 40,00 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina B1&preco=94.90&img=imgvitamina/vitaminab1.jpeg&desc=Vitamina B1">
+       href="paginadoproduto.html?nome=Vitamina B1&preco=40,00&img=imgvitamina/vitaminab1.jpeg&desc=Vitamina B1">
         Comprar
     </a>
             </button>
@@ -242,12 +242,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 3 -->
        <div class="card">
-            <img src="../imgvitamina/vitaminab12.jpeg">  
+            <img src="imgvitamina/vitaminab12.jpeg">  
              <p class="titulo">Vitamina B12</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 40,00 no PIX</p>
            <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina B12&preco=94.90&img=imgvitamina/vitaminab12.jpeg&desc=Vitamina B12">
+       href="paginadoproduto.html?nome=Vitamina B12&preco=40,00&img=imgvitamina/vitaminab12.jpeg&desc=Vitamina B12">
         Comprar
     </a>
             </button>
@@ -255,12 +255,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 4 -->
         <div class="card">
-            <img src="../imgvitamina/vitaminab6.jpeg">  
+            <img src="imgvitamina/vitaminab6.jpeg">  
              <p class="titulo">Vitamina B6</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 40,00 no PIX</p>
              <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina B6&preco=94.90&img=imgvitamina/vitaminab6.jpeg&desc=Vitamina B6">
+       href="paginadoproduto.html?nome=Vitamina B6&preco=40,00&img=imgvitamina/vitaminab6.jpeg&desc=Vitamina B6">
         Comprar
     </a>
             </button>
@@ -268,12 +268,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 5 -->
         <div class="card">
-            <img src="../imgvitamina/vitaminac.jpeg">  
+            <img src="imgvitamina/vitaminac.jpeg">  
              <p class="titulo">Vitamina C</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 40,00 no PIX</p>
              <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina C&preco=94.90&img=imgvitamina/vitaminac.jpeg&desc=Vitamina C">
+       href="paginadoproduto.html?nome=Vitamina C&preco=40,00&img=imgvitamina/vitaminac.jpeg&desc=Vitamina C">
         Comprar
     </a>
             </button>
@@ -281,12 +281,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 6 -->
        <div class="card">
-            <img src="../imgvitamina/vitaminad.jpeg">  
+            <img src="imgvitamina/vitaminad.jpeg">  
              <p class="titulo">Vitamina D</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 40,00 no PIX</p>
              <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina D&preco=94.90&img=imgvitamina/vitaminad.jpeg&desc=Vitamina D">
+       href="paginadoproduto.html?nome=Vitamina D&preco=40,00&img=imgvitamina/vitaminad.jpeg&desc=Vitamina D">
         Comprar
     </a>
             </button>
@@ -294,24 +294,24 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 7 -->
         <div class="card">
-            <img src="../imgvitamina/vitaminae.jpeg">  
+            <img src="imgvitamina/vitaminae.jpeg">  
              <p class="titulo">Vitamina E</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 40,00 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina E&preco=94.90&img=imgvitamina/vitaminae.jpeg&desc=Vitamina E">
+       href="paginadoproduto.html?nome=Vitamina E&preco=40,00&img=imgvitamina/vitaminae.jpeg&desc=Vitamina E">
         Comprar
     </a>
             </button>
         </div>
         <!-- Produto 8 -->
        <div class="card">
-            <img src="../imgvitamina/vitaminak.jpeg">  
+            <img src="imgvitamina/vitaminak.jpeg">  
              <p class="titulo">Vitamina K</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 40,00 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina K&preco=94.90&img=imgvitamina/vitaminak.jpeg&desc=Vitamina K">
+       href="paginadoproduto.html?nome=Vitamina K&preco=40,00&img=imgvitamina/vitaminak.jpeg&desc=Vitamina K">
         Comprar
     </a>
             </button>
@@ -319,24 +319,24 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 9 -->
         <div class="card">
-            <img src="../imgvitamina/vitaminamulti.jpeg">  
+            <img src="imgvitamina/vitaminamulti.jpeg">  
              <p class="titulo">Vitamina Multivitamínico</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 42,00 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina Multivitamínico&preco=94.90&img=imgvitamina/vitaminamulti.jpeg&desc=Vitamina Multivitamínico">
+       href="paginadoproduto.html?nome=Vitamina Multivitamínico&preco=42,00&img=imgvitamina/vitaminamulti.jpeg&desc=Vitamina Multivitamínico">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgvitamina/vitaminaomega3.jpeg">  
+            <img src="imgvitamina/vitaminaomega3.jpeg">  
              <p class="titulo">Vitamina Ômega 3</p>
-            <p class="preco verde">R$ 94,90 no PIX</p>
+            <p class="preco verde">R$ 20,00 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Vitamina Ômega 3&preco=94.90&img=imgvitamina/vitaminaomega3.jpeg&desc=Vitamina Ômega 3">
+       href="paginadoproduto.html?nome=Vitamina Ômega 3&preco=20,00&img=imgvitamina/vitaminaomega3.jpeg&desc=Vitamina Ômega 3">
         Comprar
     </a>
             </button>
@@ -387,64 +387,5 @@ $dados = mysqli_fetch_assoc($res);
         © 2026 Nutri&Treino — Todos os direitos reservados.
     </div>
 </footer>
-
-<!-- ===== PAINEL LATERAL ===== -->
-   <form id="painel" class="painel" method="POST" action="../t_usuario/salvar_perfil.php">
-
-    <button type="button" class="fechar" onclick="fecharPainel()">✖</button>
-
-    <h2>Perfil</h2>
-
-    <p class="nome-usuario">
-    <?php echo $_SESSION["usuario_nome"]; ?>
-</p>
-
-    <div class="item">
-        <label>Genero</label>
-        <select name="genero" required>
-            <option value="Masculino"
-              <?php if(($dados['genero'] ?? '') == "Masculino") echo "selected"; ?>>
-              Masculino
-            </option>
-            <option value="Feminino"<?php if(($dados['genero'] ?? '') == "Feminino") echo "selected"; ?>>
-              Feminino
-            </option>
-        </select>
-    </div>
-
-    <div class="item">
-        <label>Altura</label>
-        <input type="text" name="altura" value="<?php echo $dados['altura'] ?? ''; ?>" placeholder="Ex: 1.75" required>
-    </div>
-
-    <div class="item">
-        <label>Idade</label>
-        <input type="number" name="idade" value="<?php echo $dados['idade'] ?? ''; ?>" required>
-    </div>
-
-    <div class="item">
-        <label>Peso</label>
-        <input type="number" name="peso" value="<?php echo $dados['peso'] ?? ''; ?>" required>
-    </div>
-
-    <button type="submit" class="btn-salvar">Salvar</button>
-
-    <button type="button" class="btn-sair" onclick="window.location.href='logout.php'">
-    Sair da conta
-</button>
-
-</form>
-  
-</div>
-
-<script>
-function abrirPainel() {
-    document.getElementById("painel").classList.add("ativo");
-}
-
-function fecharPainel() {
-    document.getElementById("painel").classList.remove("ativo");
-}
-</script>
-</body>
-</html>
+ </body>
+ </html>

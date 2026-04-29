@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../includes/conexao.php";
+include "includes/conexao.php";
 
 $usuario_id = $_SESSION["usuario_id"];
 
@@ -16,15 +16,15 @@ $dados = mysqli_fetch_assoc($res);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pré-Treinos</title>
-    <link rel="stylesheet" href="../css/styleswhey.css">
+    <link rel="stylesheet" href="css/styleswhey.css">
 </head>
 <body>
 
    <header class="site-header">
     <div class="topbar container">
      
-       <a href="usuariologado.php" class="logo-link">
-    <img src="../img/logonutri.png" alt="Logo" class="logo">
+       <a href="index.html" class="logo-link">
+    <img src="img/logonutri.png" alt="Logo" class="logo">
 </a>
 
       <form class="search" onsubmit="return buscarProduto(event)">
@@ -98,11 +98,11 @@ $dados = mysqli_fetch_assoc($res);
 <script>
   // produtos simulados
   const produtos = [
-    { nome: "Whey Protein", url: "whey.php" },
-    { nome: "Creatina", url: "creatina.php" },
-    { nome: "vitaminas", url: "vitaminas.php" },
-    { nome: "Pré-treino", url: "pretreino.php" },
-    { nome: "barrinhas", url: "barrinhas.php" }
+    { nome: "Whey Protein", url: "whey.html" },
+    { nome: "Creatina", url: "creatina.html" },
+    { nome: "vitaminas", url: "vitaminas.html" },
+    { nome: "Pré-treino", url: "pretreino.html" },
+    { nome: "barrinhas", url: "barrinhas.html" }
   ];
 
   const campoBusca = document.getElementById("campoBusca");
@@ -140,17 +140,17 @@ $dados = mysqli_fetch_assoc($res);
       <nav class="quick-icons" aria-label="Acesso rápido">
         
           <!-- ícone usuário -->
-          <a href="#" onclick="abrirPainel()"> 
+          <a href="login.php"> 
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21a8 8 0 0 0-16 0"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
+          <span>Minha conta</span>
         </a>
         
           <!-- ícone sacola -->
-     <!-- ícone sacola -->
-          <a href="../carrinho.php" class="link-cesta" aria-label="Carrinho de compras">
+     <a href="carrinho.html" class="link-cesta" aria-label="Carrinho de compras">
   <svg
     class="icone-cesta"
     width="22"
@@ -167,10 +167,11 @@ $dados = mysqli_fetch_assoc($res);
     <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
   </svg>
 </a>
+</a>
+        </a>
     
           <!-- ícone coração -->
- <a href="../favoritos.html" class="link-favorito" aria-label="favoritos">
-
+           <a href="favoritos.html" class="link-favorito" aria-label="favoritos">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-8.6 1-1a5.5 5.5 0 0 0 0-7.8Z"></path>
@@ -183,11 +184,11 @@ $dados = mysqli_fetch_assoc($res);
     
   <nav class="main-nav" aria-label="Principal">
         <ul class="nav-list">
-            <li class="nav-item"><a class="nav-link" href="../consultas.php">Consultas</a></li>
-            <li class="nav-item"><a class="nav-link"href="treinos.php">Treinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="produto.php">Produtos</a></li>
-            <li class="nav-item"><a class="nav-link" href="gympass.php">Buscar Academias</a></li>
-            <li class="nav-item"><a class="nav-link" href="planos.php">Planos</a></li>
+            <li class="nav-item"><a class="nav-link" href="consultas.php">Consultas</a></li>
+            <li class="nav-item"><a class="nav-link"href="treinos.html">Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="produto.html">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="gympass.html">Buscar Academias</a></li>
+            <li class="nav-item"><a class="nav-link" href="planos.html">Planos</a></li>
         </ul>
     </nav>
 
@@ -197,11 +198,11 @@ $dados = mysqli_fetch_assoc($res);
 
     <nav class="categoria">
        <ul class="nav-lists">
-            <li class="nav-item"><a class="nav-link" href="whey.php">Whey</a></li>
-            <li class="nav-item"><a class="nav-link"href="pretreino.php">Pré-Treinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="barrinhas.php">Barrinhas</a></li>
-            <li class="nav-item"><a class="nav-link" href="vitaminas.php">Vitaminas</a></li>
-            <li class="nav-item"><a class="nav-link" href="creatina.php">Creatina</a></li>
+            <li class="nav-item"><a class="nav-link" href="whey.html">Whey</a></li>
+            <li class="nav-item"><a class="nav-link"href="pretreino.html">Pré-Treinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="barrinhas.html">Barrinhas</a></li>
+            <li class="nav-item"><a class="nav-link" href="vitaminas.html">Vitaminas</a></li>
+            <li class="nav-item"><a class="nav-link" href="creatina.html">Creatina</a></li>
         </ul>
     </nav>
  
@@ -216,12 +217,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 1 -->
        <div class="card">
-            <img src="../imgpretreino/pre de abacaxi.jpeg">  
+            <img src="imgpretreino/pre de abacaxi.jpeg">  
              <p class="titulo">Pré Treino - Abacaxi</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Abacaxi&preco=94.90&img=imgpretreino/pre de abacaxi.jpeg&desc=Pré Treino - Abacaxi">
+       href="paginadoproduto.html?nome=Pré Treino - Abacaxi&preco=94,90&img=imgpretreino/pre de abacaxi.jpeg&desc=Pré Treino - Abacaxi">
         Comprar
     </a>
             </button>
@@ -229,12 +230,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 2 -->
         <div class="card">
-            <img src="../imgpretreino/pre de frutas.jpeg">  
+            <img src="imgpretreino/pre de frutas.jpeg">  
              <p class="titulo">Pré Treino - Frutas Vermelhas </p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Frutas Vermelhas&preco=94.90&img=imgpretreino/pre de frutas.jpeg&desc=Pré Treino - Frutas Vermelhas">
+       href="paginadoproduto.html?nome=Pré Treino - Frutas Vermelhas&preco=94.90&img=imgpretreino/pre de frutas.jpeg&desc=Pré Treino - Frutas Vermelhas">
         Comprar
     </a>
             </button>
@@ -243,12 +244,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 3 -->
        <div class="card">
-            <img src="../imgpretreino/pre de limão.png">  
+            <img src="imgpretreino/pre de limão.png">  
              <p class="titulo">Pré Treino - Limão Tropical </p>
             <p class="preco verde">R$ 94,90 no PIX</p>
            <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Limão Tropical&preco=94.90&img=imgpretreino/pre de limão.png&desc=Pré Treino - Limão Tropical">
+       href="paginadoproduto.html?nome=Pré Treino - Limão Tropical&preco=94.90&img=imgpretreino/pre de limão.png&desc=Pré Treino - Limão Tropical">
         Comprar
     </a>
             </button>
@@ -256,12 +257,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 4 -->
         <div class="card">
-            <img src="../imgpretreino/pre de melancia.png">  
+            <img src="imgpretreino/pre de melancia.png">  
              <p class="titulo">Pré Treino - Melancia </p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Melancia&preco=94.90&img=imgpretreino/pre de melancia.png&desc=Pré Treino - Melancia">
+       href="paginadoproduto.html?nome=Pré Treino - Melancia&preco=94.90&img=imgpretreino/pre de melancia.png&desc=Pré Treino - Melancia">
         Comprar
     </a>
             </button>
@@ -269,12 +270,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 5 -->
         <div class="card">
-            <img src="../imgpretreino/pre laranja.png">  
+            <img src="imgpretreino/pre laranja.png">  
              <p class="titulo">Pré Treino - Laranja</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
           <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Limão Tropical&preco=94.90&img=imgpretreino/pre laranja.png&desc=Pré Treino - Limão Tropical">
+       href="paginadoproduto.html?nome=Pré Treino - Limão Tropical&preco=94.90&img=imgpretreino/pre laranja.png&desc=Pré Treino - Limão Tropical">
         Comprar
     </a>
             </button>
@@ -282,12 +283,12 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 6 -->
        <div class="card">
-            <img src="../imgpretreino/pre maça verde.png">  
+            <img src="imgpretreino/pre maça verde.png">  
              <p class="titulo">Pré Treino - Maça Verde</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Maça Verde&preco=94.90&img=imgpretreino/pre maça verde.png&desc=Pré Treino - Maça Verde">
+       href="paginadoproduto.html?nome=Pré Treino - Maça Verde&preco=94.90&img=imgpretreino/pre maça verde.png&desc=Pré Treino - Maça Verde">
         Comprar
     </a>
             </button>
@@ -295,24 +296,24 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 7 -->
         <div class="card">
-            <img src="../imgpretreino/pre uva.png">  
+            <img src="imgpretreino/pre uva.png">  
              <p class="titulo">Pré Treino - Uva</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Uva&preco=94.90&img=imgpretreino/pre uva.png&desc=Pré Treino - Uva">
+       href="paginadoproduto.html?nome=Pré Treino - Uva&preco=94.90&img=imgpretreino/pre uva.png&desc=Pré Treino - Uva">
         Comprar
     </a>
             </button>
         </div>
         <!-- Produto 8 -->
        <div class="card">
-            <img src="../imgpretreino/pre morango.png">  
+            <img src="imgpretreino/pre morango.png">  
              <p class="titulo">Pré Treino - Morango</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Morango&preco=94.90&img=imgpretreino/pre morango.png&desc=Pré Treino - Morango">
+       href="paginadoproduto.html?nome=Pré Treino - Morango&preco=94.90&img=imgpretreino/pre morango.png&desc=Pré Treino - Morango">
         Comprar
     </a>
             </button>
@@ -320,84 +321,84 @@ $dados = mysqli_fetch_assoc($res);
 
         <!-- Produto 9 -->
         <div class="card">
-            <img src="../imgpretreino/pre kiwi.png">  
+            <img src="imgpretreino/pre kiwi.png">  
              <p class="titulo">Pré Treino - Kiwi</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Kiwi&preco=94.90&img=imgpretreino/pre kiwi.png&desc=Pré Treino - Kiwi">
+       href="paginadoproduto.html?nome=Pré Treino - Kiwi&preco=94.90&img=imgpretreino/pre kiwi.png&desc=Pré Treino - Kiwi">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgpretreino/pre caju.png">  
+            <img src="imgpretreino/pre caju.png">  
              <p class="titulo">Pré Treino - Caju</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Caju&preco=94.90&img=imgpretreino/pre caju.png&desc=Pré Treino - Caju">
+       href="paginadoproduto.html?nome=Pré Treino - Caju&preco=94.90&img=imgpretreino/pre caju.png&desc=Pré Treino - Caju">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgpretreino/pre açai.png">  
+            <img src="imgpretreino/pre açai.png">  
              <p class="titulo">Pré Treino - Açai</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
            <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Açai&preco=94.90&img=imgpretreino/pre açai.png&desc=Pré Treino - Açai">
+       href="paginadoproduto.html?nome=Pré Treino - Açai&preco=94.90&img=imgpretreino/pre açai.png&desc=Pré Treino - Açai">
         Comprar
     </a>
             </button>
         </div>
 
        <div class="card">
-            <img src="../imgpretreino/pre cereja.png">  
+            <img src="imgpretreino/pre cereja.png">  
              <p class="titulo">Pré Treino - Cereja</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Cereja&preco=94.90&img=imgpretreino/pre cereja.png&desc=Pré Treino - Cereja">
+       href="paginadoproduto.html?nome=Pré Treino - Cereja&preco=94.90&img=imgpretreino/pre cereja.png&desc=Pré Treino - Cereja">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgpretreino/pre coco.png">  
+            <img src="imgpretreino/pre coco.png">  
              <p class="titulo">Pré Treino - Coco</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Coco&preco=94.90&img=imgpretreino/pre coco.png&desc=Pré Treino - Coco">
+       href="paginadoproduto.html?nome=Pré Treino - Coco&preco=94.90&img=imgpretreino/pre coco.png&desc=Pré Treino - Coco">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgpretreino/pre maracuja.png">  
+            <img src="imgpretreino/pre maracuja.png">  
              <p class="titulo">Pré Treino - Maracujá</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Maracujá&preco=94.90&img=imgpretreino/pre maracuja.png&desc=Pré Treino - Maracujá">
+       href="paginadoproduto.html?nome=Pré Treino - Maracujá&preco=94.90&img=imgpretreino/pre maracuja.png&desc=Pré Treino - Maracujá">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgpretreino/mix de frutas.jpeg">  
+            <img src="imgpretreino/mix de frutas.jpeg">  
              <p class="titulo">Pré Treino - Mix de Frutas</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Mix de Frutas&preco=94.90&img=imgpretreino/mix de frutas.jpeg&desc=Pré Treino - Mix de Frutas">
+       href="paginadoproduto.html?nome=Pré Treino - Mix de Frutas&preco=94.90&img=imgpretreino/mix de frutas.jpeg&desc=Pré Treino - Mix de Frutas">
         Comprar
     </a>
             </button>
@@ -405,59 +406,59 @@ $dados = mysqli_fetch_assoc($res);
 
 
         <div class="card">
-            <img src="../imgpretreino/mix.jpeg">  
+            <img src="imgpretreino/mix.jpeg">  
              <p class="titulo">Pré Treino - Mix de Frutas</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
-               <a class="btn-comprar"href="../paginadoproduto.html?nome=Pré Treino - Mix de Frutas&preco=94.90&img=imgpretreino/mix.jpeg&desc=Pré Treino - Mix de Frutas">
+               <a class="btn-comprar"href="paginadoproduto.html?nome=Pré Treino - Mix de Frutas&preco=94.90&img=imgpretreino/mix.jpeg&desc=Pré Treino - Mix de Frutas">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgpretreino/mixs.jpeg">  
+            <img src="imgpretreino/mixs.jpeg">  
              <p class="titulo">Pré Treino - Mix de Frutas</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Mix de Frutas&preco=94.90&img=imgpretreino/mixs.jpeg&desc=Pré Treino - Mix de Frutas">
+       href="paginadoproduto.html?nome=Pré Treino - Mix de Frutas&preco=94.90&img=imgpretreino/mixs.jpeg&desc=Pré Treino - Mix de Frutas">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgpretreino/pitaya.jpeg">  
+            <img src="imgpretreino/pitaya.jpeg">  
              <p class="titulo">Pré Treino - Pitaya</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Pitaya&preco=94.90&img=imgpretreino/pitaya.jpeg&desc=Pré Treino - Pitaya">
+       href="paginadoproduto.html?nome=Pré Treino - Pitaya&preco=94.90&img=imgpretreino/pitaya.jpeg&desc=Pré Treino - Pitaya">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgpretreino/melancia.jpeg">  
+            <img src="imgpretreino/melancia.jpeg">  
              <p class="titulo">Pré Treino - Mix de Frutas</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
             <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Mix de Frutas&preco=94.90&img=imgpretreino/melancia.jpeg&desc=Mix de Frutas">
+       href="paginadoproduto.html?nome=Mix de Frutas&preco=94.90&img=imgpretreino/melancia.jpeg&desc=Mix de Frutas">
         Comprar
     </a>
             </button>
         </div>
 
         <div class="card">
-            <img src="../imgpretreino/pessego.png">  
+            <img src="imgpretreino/pessego.png">  
              <p class="titulo">Pré Treino - Pêssego</p>
             <p class="preco verde">R$ 94,90 no PIX</p>
          <button>
                <a class="btn-comprar"
-       href="../paginadoproduto.html?nome=Pré Treino - Pêssego&preco=94.90&img=imgpretreino/pessego.png&desc=Pré Treino - Pêssego">
+       href="paginadoproduto.html?nome=Pré Treino - Pêssego&preco=94.90&img=imgpretreino/pessego.png&desc=Pré Treino - Pêssego">
         Comprar
     </a>
             </button>>
@@ -508,64 +509,5 @@ $dados = mysqli_fetch_assoc($res);
         © 2026 Nutri&Treino — Todos os direitos reservados.
     </div>
 </footer>
-
-<!-- ===== PAINEL LATERAL ===== -->
-   <form id="painel" class="painel" method="POST" action="../t_usuario/salvar_perfil.php">
-
-    <button type="button" class="fechar" onclick="fecharPainel()">✖</button>
-
-    <h2>Perfil</h2>
-
-    <p class="nome-usuario">
-    <?php echo $_SESSION["usuario_nome"]; ?>
-</p>
-
-    <div class="item">
-        <label>Genero</label>
-        <select name="genero" required>
-            <option value="Masculino"
-              <?php if(($dados['genero'] ?? '') == "Masculino") echo "selected"; ?>>
-              Masculino
-            </option>
-            <option value="Feminino"<?php if(($dados['genero'] ?? '') == "Feminino") echo "selected"; ?>>
-              Feminino
-            </option>
-        </select>
-    </div>
-
-    <div class="item">
-        <label>Altura</label>
-        <input type="text" name="altura" value="<?php echo $dados['altura'] ?? ''; ?>" placeholder="Ex: 1.75" required>
-    </div>
-
-    <div class="item">
-        <label>Idade</label>
-        <input type="number" name="idade" value="<?php echo $dados['idade'] ?? ''; ?>" required>
-    </div>
-
-    <div class="item">
-        <label>Peso</label>
-        <input type="number" name="peso" value="<?php echo $dados['peso'] ?? ''; ?>" required>
-    </div>
-
-    <button type="submit" class="btn-salvar">Salvar</button>
-
-    <button type="button" class="btn-sair" onclick="window.location.href='logout.php'">
-    Sair da conta
-</button>
-
-</form>
-  
-</div>
-
-<script>
-function abrirPainel() {
-    document.getElementById("painel").classList.add("ativo");
-}
-
-function fecharPainel() {
-    document.getElementById("painel").classList.remove("ativo");
-}
-</script>
-</body>
-</html>
+ </body>
+ </html>
