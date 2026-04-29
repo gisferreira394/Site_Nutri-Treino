@@ -55,21 +55,27 @@ $dados = mysqli_fetch_assoc($res);
         </a>
         
           <!-- ícone sacola -->
-          <svg class="icone-cesta"
-     width="22" height="22"
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     stroke-width="2"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     aria-hidden="true">
-  <path d="M6 2h12l2 7H4l2-7Z"></path>
-  <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
-</svg>
-        </a>
+          <a href="../carrinho.php" class="link-cesta" aria-label="Carrinho de compras">
+  <svg
+    class="icone-cesta"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true">
+    
+    <path d="M6 2h12l2 7H4l2-7Z"></path>
+    <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
+  </svg>
+</a>
     
           <!-- ícone coração -->
+ <a href="../favoritos.html" class="link-favorito" aria-label="favoritos">
+
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-8.6 1-1a5.5 5.5 0 0 0 0-7.8Z"></path>
@@ -299,9 +305,13 @@ $dados = mysqli_fetch_assoc($res);
         <input type="number" name="peso" value="<?php echo $dados['peso'] ?? ''; ?>" required>
     </div>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn-salvar">Salvar</button>
 
+    <button type="button" class="btn-sair" onclick="window.location.href='logout.php'">
+    Sair da conta
+</button>
 </form>
+
   
 </div>
 

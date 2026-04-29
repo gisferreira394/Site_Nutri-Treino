@@ -57,7 +57,8 @@ $dados = mysqli_fetch_assoc($res);
         </a>
 
             <!-- ícone sacola -->
-         <a href="../carrinho.html" class="link-cesta" aria-label="Carrinho de compras">
+         <!-- ícone sacola -->
+          <a href="../carrinho.php" class="link-cesta" aria-label="Carrinho de compras">
   <svg
     class="icone-cesta"
     width="22"
@@ -74,10 +75,15 @@ $dados = mysqli_fetch_assoc($res);
     <path d="M9 10v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3V10"></path>
   </svg>
 </a>
+    
+          <!-- ícone coração -->
+ <a href="../favoritos.html" class="link-favorito" aria-label="favoritos">
 
-            <svg width="22" height="22" stroke="white" stroke-width="2" fill="none" viewBox="0 0 24 24">
-                <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-8.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/>
-            </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 22l7.8-8.6 1-1a5.5 5.5 0 0 0 0-7.8Z"></path>
+          </svg>
+        </a>
 
         </nav>
     </div>
@@ -108,23 +114,23 @@ $dados = mysqli_fetch_assoc($res);
 
         <div class="card">
             <h3>Plano Básico</h3>
-            <span class="price">R$39</span>
-            <p>Acompanhamento mensal com ajustes estratégicos.</p>
-            <button>Assinar</button>
+      <span class="price">R$150</span>
+      <p>Acompanhamento mensal com ajustes estratégicos.</p>
+      <a href="../plano-basico.html" class="btn-assinar">Assinar</a>
         </div>
 
         <div class="card">
-            <h3>Plano Plus </h3>
-            <span class="price">R$49</span>
-            <p>Acesso a avaliações semanais e suporte nutricional.</p>
-            <button>Assinar</button>
+            <h3>Plano Plus</h3>
+      <span class="price">R$200</span>
+      <p>Acesso a avaliações semanais e suporte nutricional.</p>
+      <a href="../plano-plus.html" class="btn-assinar">Assinar</a>
         </div>
 
 <div class="card">
-            <h3>Plano Avançado </h3>
-            <span class="price">R$69</span>
-            <p>Acesso a treino personalizado, plano alimentar e suporte diários </p>
-            <button>Assinar</button>
+            <h3>Plano Avançado</h3>
+      <span class="price">R$350</span>
+      <p>Treino personalizado, plano alimentar e suporte diário.</p>
+      <a href="../plano-avancado.html" class="btn-assinar">Assinar</a>
         </div>
 
 
@@ -214,7 +220,11 @@ $dados = mysqli_fetch_assoc($res);
         <input type="number" name="peso" value="<?php echo $dados['peso'] ?? ''; ?>" required>
     </div>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" class="btn-salvar">Salvar</button>
+
+    <button type="button" class="btn-sair" onclick="window.location.href='logout.php'">
+    Sair da conta
+</button>
 
 </form>
   

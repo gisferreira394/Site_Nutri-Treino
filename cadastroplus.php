@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["usuario_id"])) {
+    // não está logado
+    $naoLogado = true;
+} else {
+    $naoLogado = false;
+
+    include "includes/conexao.php";
+
+    $usuario_id = $_SESSION["usuario_id"];
+
+    $sql = "SELECT nome, email FROM usuarios WHERE id = $usuario_id";
+    $res = mysqli_query($conexao, $sql);
+    $dados = mysqli_fetch_assoc($res);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,6 +28,17 @@
 
 <body>
 
+  <?php if ($naoLogado): ?>
+
+<div class="login-alert">
+    <h2>🔒 Acesso restrito</h2>
+    <p>Você precisa estar logado para acessar essa página.</p>
+    
+    <a href="login.php" class="btn-login">Fazer login</a>
+</div>
+
+<?php else: ?>
+
   <main class="container">
 
     <h1>Cadastro de planos </h1>
@@ -17,12 +47,12 @@
     <form action="processa-cadastro.php" method="POST" class="form-cadastro">
   
   <!-- Nome -->
-  <label for="nome">Nome completo</label>
-  <input type="text" id="nome" name="nome" required>
-
-  <!-- Email -->
+  <label for="nome">Nome</label>
+  <input type="text" id="nome" name="nome" value="<?php echo $dados['nome'] ?? ''; ?>" readonly>
   <label for="email">E-mail</label>
-  <input type="email" id="email" name="email" required>
+  <input type="email" id="email" name="email" value="<?php echo $dados['email'] ?? ''; ?>" readonly>
+
+
 
   <!-- Senha -->
   <label for="senha">Senha</label>
@@ -60,11 +90,11 @@
 
   <!-- Botão -->
   <button type="submit" class="btn-principal">
-  <a href="pagamento-pixplanoA.html" class="btn-principal">Finalizar Cadastro</a>
+  <a href="pagamento-pixplanoB.html" class="btn-principal">Finalizar Cadastro</a>
 </button>
 </form>
 
-    <a href="planos.html" class="voltar">← Voltar para os planos</a>
+    <a href="planos.php" class="voltar">← Voltar para os planos</a>
 
   </main>
 
@@ -97,3 +127,4 @@
 
 </body>
 </html>
+<?php endif; ?>

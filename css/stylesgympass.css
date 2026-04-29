@@ -484,7 +484,8 @@ button {
 }
 
 /* BOTÃO */
-.painel button:last-child {
+/* botão salvar (verde) */
+.btn-salvar {
     margin-top: 20px;
     width: 100%;
     padding: 10px;
@@ -492,6 +493,19 @@ button {
     border: none;
     color: white;
     border-radius: 8px;
+    cursor: pointer;
+}
+
+/* botão sair (vermelho) */
+.btn-sair {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    background: #e74c3c;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 /* ===== Responsivo ===== */
