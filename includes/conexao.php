@@ -1,12 +1,9 @@
+
 <?php
-$host = getenv("MYSQLHOST");
-$user = getenv("MYSQLUSER");
-$pass = getenv("MYSQLPASSWORD");
-$db   = getenv("MYSQLDATABASE");
-$port = getenv("MYSQLPORT");
+$bd_usuario = "root";
+$bd_senha = "";
+$bd_servidor = "localhost";
+$bd_banco = "nutri-treino";
+$conexao = mysqli_connect($bd_servidor,$bd_usuario,$bd_senha,$bd_banco);
+?>
 
-$conexao = mysqli_connect($host, $user, $pass, $db, $port);
-
-if (!$conexao) {
-    die("Erro de conexão com o banco");
-}
