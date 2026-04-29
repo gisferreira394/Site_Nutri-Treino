@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["usuario_id"])) {
+    // não está logado
+    $naoLogado = true;
+} else {
+    $naoLogado = false;
+
+    include "includes/conexao.php";
+
+    $usuario_id = $_SESSION["usuario_id"];
+
+    $sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
+    $res = mysqli_query($conexao, $sql);
+    $dados = mysqli_fetch_assoc($res);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,6 +27,17 @@
 </head>
 
 <body>
+
+  <?php if ($naoLogado): ?>
+
+<div class="login-alert">
+    <h2>🔒 Acesso restrito</h2>
+    <p>Você precisa estar logado para acessar essa página.</p>
+    
+    <a href="login.php" class="btn-login">Fazer login</a>
+</div>
+
+<?php else: ?>
 
   <main class="container">
 
@@ -60,7 +90,7 @@
 
   <!-- Botão -->
   <button type="submit" class="btn-principal">
-  <a href="pagamento-pixplanoC.html" class="btn-principal">Finalizar Cadastro</a>
+  <a href="pagamento-pixplanoA.html" class="btn-principal">Finalizar Cadastro</a>
 </button>
 </form>
 
@@ -97,3 +127,4 @@
 
 </body>
 </html>
+<?php endif; ?>

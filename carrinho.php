@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["usuario_id"])) {
+    // não está logado
+    $naoLogado = true;
+} else {
+    $naoLogado = false;
+
+    include "includes/conexao.php";
+
+    $usuario_id = $_SESSION["usuario_id"];
+
+    $sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
+    $res = mysqli_query($conexao, $sql);
+    $dados = mysqli_fetch_assoc($res);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -185,11 +204,52 @@ select {
     color: #387856;
 }
 
+.login-alert {
+    width: 90%;        /* ocupa mais da tela no celular */
+    max-width: 400px;  /* limite no desktop */
+    margin: 80px auto; /* menos espaço em cima */
+    padding: 30px;
+    text-align: center;
+
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.login-alert h2 {
+    margin-bottom: 10px;
+}
+
+.login-alert p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.btn-login {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4c5fd5;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
 </style>
 
 </head>
 
 <body>
+
+<?php if ($naoLogado): ?>
+
+<div class="login-alert">
+    <h2>🔒 Acesso restrito</h2>
+    <p>Você precisa estar logado para acessar essa página.</p>
+    
+    <a href="login.php" class="btn-login">Fazer login</a>
+</div>
+
+<?php else: ?>
 
 <header>Meu Carrinho</header>
 
@@ -425,3 +485,4 @@ mostrarStatusPedido();
 
 </body>
 </html>
+<?php endif; ?>
