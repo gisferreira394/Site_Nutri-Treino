@@ -1,36 +1,36 @@
 <?php
-session_start(); // 👈 IMPORTANTE
+session_start();
 
-include "includes/conexao.php";
+require "db.php"; // NOVO ARQUIVO DE CONEXÃO (PDO)
 
-$email = $_POST["email"];
-$senha = $_POST["senha"];
+$email = $_POST["email"] ?? null;
+$senha = $_POST["senha"] ?? null;
 
-$sql = "SELECT * FROM usuarios 
-        WHERE email='$email' AND verificado=1";
-
-$res = mysqli_query($conexao, $sql);
-
-if (mysqli_num_rows($res) > 0) {
-    $user = mysqli_fetch_assoc($res);
-
-    if (password_verify($senha, $user["senha"])) {
-
-        // salva na sessão
-        $_SESSION["usuario_id"] = $user["id"];
-        $_SESSION["usuario_nome"] = $user["nome"];
-
-        // redireciona
-        header("Location: logado/usuariologado.php");
-        exit;
-
-    } else {
-        header("Location: login.php?erro=senha");
-        exit;
-    }
-
-} else {
+if (!$email || !$senha) {
     header("Location: login.php?erro=conta");
     exit;
 }
-?>
+
+$stmt = $pdo->prepare("
+    SELECT * FROM usuarios 
+    WHERE email = ? AND verificado = 1
+");
+$stmt->execute([$email]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    header("Location: login.php?erro=conta");
+    exit;
+}
+
+if (!password_verify($senha, $user["senha"])) {
+    header("Location: login.php?erro=senha");
+    exit;
+}
+
+// login OK
+$_SESSION["usuario_id"]   = $user["id"];
+$_SESSION["usuario_nome"] = $user["nome"];
+
+header("Location: logado/usuariologado.php");
+exit;
