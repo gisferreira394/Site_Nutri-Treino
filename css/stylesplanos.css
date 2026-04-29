@@ -364,7 +364,7 @@ transform: translateY(-40%);
     padding: 25px;
     box-shadow: -5px 0 20px rgba(0,0,0,0.3);
     transition: 0.4s;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 /* QUANDO ABRIR */
@@ -505,6 +505,21 @@ transform: translateY(-40%);
   .logo-link {
   width: 60px;
   flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+
+  .painel {
+    width: 100%;      /* ocupa tudo */
+    right: -100%;     /* começa escondido */
+    height: 100%;
+    border-radius: 0; /* remove borda arredondada */
+  }
+
+  .painel.ativo {
+    right: 0; /* entra totalmente */
+  }
+
 }
 
   /* LOGO MENOR */

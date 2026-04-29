@@ -94,7 +94,7 @@ if (!isset($_SESSION["usuario_id"])) {
 </button>
 </form>
 
-    <a href="planos.php" class="voltar">← Voltar para os planos</a>
+    <a href="logado/planos.php" class="voltar">← Voltar para os planos</a>
 
   </main>
 

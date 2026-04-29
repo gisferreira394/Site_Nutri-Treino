@@ -25,9 +25,10 @@ if (!isset($_SESSION["usuario_id"])) {
 
 <style>
 body {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     background: #f4f4f9;
     padding: 20px;
+    margin: 0;
 }
 
 .container {
@@ -37,10 +38,11 @@ body {
     padding: 25px;
     border-radius: 8px;
     position: relative;
+    box-sizing: border-box;
 }
 
 h2 {
-    text-align: center; /* centraliza o título */
+    text-align: center;
     margin: 0;
 }
 
@@ -60,25 +62,27 @@ h2 {
 /* Padronização dos campos */
 input, select, button {
     display: block;
-    width: 100%;
-    box-sizing: border-box; /* garante que padding não quebre o tamanho */
+    width: 100%;              /* ocupa toda a largura disponível */
+    box-sizing: border-box;
     padding: 12px;
     margin-top: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
 }
 
+/* Botão principal */
 button {
     background: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
     font-weight: bold;
-    padding: 10px 20px;   /* reduz o tamanho interno */
-    width: 200px;         /* largura fixa menor */
-    margin: 15px auto;    /* centraliza horizontalmente */
-    display: block;       /* garante alinhamento */
+    padding: 12px;
+    width: 100%;              /* no celular ocupa toda a largura */
+    margin-top: 20px;
     border-radius: 5px;
+    transition: background 0.3s ease;
 }
 
 button:hover {
@@ -91,6 +95,27 @@ button:hover {
     background: #c8f7c5;
     border-radius: 5px;
 }
+
+/* Responsividade */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    input, select, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}
+
 .login-alert {
     width: 90%;        /* ocupa mais da tela no celular */
     max-width: 400px;  /* limite no desktop */

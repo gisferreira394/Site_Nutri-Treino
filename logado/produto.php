@@ -28,17 +28,115 @@ $dados = mysqli_fetch_assoc($res);
     <img src="../img/logonutri.png" alt="Logo" class="logo">
 </a>
 
-      <form class="search">
-        <input type="search" placeholder="Buscar" aria-label="Buscar" />
-        <button type="submit" aria-label="Pesquisar">
-          <!-- ícone lupa -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-      </form>
+      <form class="search" onsubmit="return buscarProduto(event)">
+  <input type="search" id="campoBusca" placeholder="Buscar" aria-label="Buscar" autocomplete="off" />
+  <button type="submit" aria-label="Pesquisar">
+    🔍
+  </button>
+  <!-- lista de sugestões -->
+  <ul id="sugestoes" class="sugestoes"></ul>
+</form>
+
+<style>
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  /* remova overflow:hidden daqui */
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 6px 10px;
+  background: transparent;
+}
+
+.search button {
+  border: none;
+  outline: none;
+  background: white; /* cinza claro */
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 0 20px 20px 0; /* arredonda só o lado direito */
+}
+
+
+
+.sugestoes {
+  color: black;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;       /* aparece logo abaixo do campo */
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-top: none; /* evita linha dupla com o campo */
+  border-radius: 0 0 10px 10px; /* arredonda só embaixo */
+  z-index: 999;    /* garante que fique por cima */
+}
+
+.sugestoes li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.sugestoes li:hover {
+  background: #f0f0f0;
+}
+
+</style>
+
+<script>
+  // produtos simulados
+  const produtos = [
+    { nome: "Whey Protein", url: "whey.php" },
+    { nome: "Creatina", url: "creatina.php" },
+    { nome: "vitaminas", url: "vitaminas.php" },
+    { nome: "Pré-treino", url: "pretreino.php" },
+    { nome: "barrinhas", url: "barrinhas.php" }
+  ];
+
+  const campoBusca = document.getElementById("campoBusca");
+  const listaSugestoes = document.getElementById("sugestoes");
+
+  campoBusca.addEventListener("input", function() {
+    const termo = this.value.toLowerCase();
+    listaSugestoes.innerHTML = "";
+
+    if (termo.length > 0) {
+      const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
+      filtrados.forEach(p => {
+        const li = document.createElement("li");
+        li.textContent = p.nome;
+        li.addEventListener("click", () => {
+          window.location.href = p.url; // redireciona ao clicar
+        });
+        listaSugestoes.appendChild(li);
+      });
+    }
+  });
+
+  function buscarProduto(event) {
+    event.preventDefault();
+    const termo = campoBusca.value.toLowerCase();
+    const produto = produtos.find(p => p.nome.toLowerCase().includes(termo));
+    if (produto) {
+      window.location.href = produto.url;
+    } else {
+      alert("Produto não encontrado!");
+    }
+  }
+</script>
 
       <nav class="quick-icons" aria-label="Acesso rápido">
         

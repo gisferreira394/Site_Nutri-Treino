@@ -11,7 +11,7 @@ if (!isset($_SESSION["usuario_id"])) {
 
     $usuario_id = $_SESSION["usuario_id"];
 
-    $sql = "SELECT * FROM dados_fisicos WHERE usuario_id = $usuario_id";
+    $sql = "SELECT nome, email FROM usuarios WHERE id = $usuario_id";
     $res = mysqli_query($conexao, $sql);
     $dados = mysqli_fetch_assoc($res);
 }
@@ -47,12 +47,11 @@ if (!isset($_SESSION["usuario_id"])) {
     <form action="processa-cadastro.php" method="POST" class="form-cadastro">
   
   <!-- Nome -->
-  <label for="nome">Nome completo</label>
-  <input type="text" id="nome" name="nome" required>
-
+  <label for="nome">Nome</label>
+  <input type="text" id="nome" name="nome" value="<?php echo $dados['nome'] ?? ''; ?>" readonly>
   <!-- Email -->
   <label for="email">E-mail</label>
-  <input type="email" id="email" name="email" required>
+  <input type="email" id="email" name="email" value="<?php echo $dados['email'] ?? ''; ?>" readonly>
 
   <!-- Senha -->
   <label for="senha">Senha</label>
@@ -94,7 +93,7 @@ if (!isset($_SESSION["usuario_id"])) {
 </button>
 </form>
 
-    <a href="planos.html" class="voltar">← Voltar para os planos</a>
+    <a href="logado/planos.php" class="voltar">← Voltar para os planos</a>
 
   </main>
 

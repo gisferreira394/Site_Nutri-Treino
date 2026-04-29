@@ -29,33 +29,34 @@
 
 <style>
 .search {
-  position: relative;       /* mantém contexto para sugestões */
-  display: flex;            /* coloca input e botão na mesma linha */
-  align-items: center;      /* alinha verticalmente */
-  width: 250px;             /* ajuste conforme seu layout */
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 250px;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 20px;
-  padding: 4px 8px;
+  /* remova overflow:hidden daqui */
 }
 
 .search input {
-  flex: 1;                  /* ocupa todo o espaço disponível */
+  flex: 1;
   border: none;
   outline: none;
   font-size: 14px;
-  background: transparent; /* evita fundo branco extra */
+  padding: 6px 10px;
+  background: transparent;
 }
 
 .search button {
-  background: none;
   border: none;
+  outline: none;
+  background: white; /* cinza claro */
+  padding: 6px 12px;
   cursor: pointer;
-  display: flex;            /* garante centralização do ícone */
-  align-items: center;
-  justify-content: center;
-  padding: 0;
+  border-radius: 0 20px 20px 0; /* arredonda só o lado direito */
 }
+
 
 
 .sugestoes {
@@ -64,13 +65,14 @@
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 100%;          /* coloca logo abaixo do input */
+  top: 100%;       /* aparece logo abaixo do campo */
   left: 0;
   right: 0;
   background: #fff;
   border: 1px solid #ccc;
-  width: 100%;        /* mesma largura do campo */
-  z-index: 10;        /* garante que fique acima de outros elementos */
+  border-top: none; /* evita linha dupla com o campo */
+  border-radius: 0 0 10px 10px; /* arredonda só embaixo */
+  z-index: 999;    /* garante que fique por cima */
 }
 
 .sugestoes li {
@@ -89,8 +91,9 @@
   const produtos = [
     { nome: "Whey Protein", url: "whey.html" },
     { nome: "Creatina", url: "creatina.html" },
-    { nome: "BCAA", url: "bcaa.html" },
-    { nome: "Pré-treino", url: "pretreino.html" }
+    { nome: "vitaminas", url: "vitaminas.html" },
+    { nome: "Pré-treino", url: "pretreino.html" },
+    { nome: "barrinhas", url: "barrinhas.html" }
   ];
 
   const campoBusca = document.getElementById("campoBusca");

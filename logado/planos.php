@@ -116,21 +116,21 @@ $dados = mysqli_fetch_assoc($res);
             <h3>Plano Básico</h3>
       <span class="price">R$150</span>
       <p>Acompanhamento mensal com ajustes estratégicos.</p>
-      <a href="../plano-basico.html" class="btn-assinar">Assinar</a>
+      <a href="plano-basico.html" class="btn-assinar">Assinar</a>
         </div>
 
         <div class="card">
             <h3>Plano Plus</h3>
       <span class="price">R$200</span>
       <p>Acesso a avaliações semanais e suporte nutricional.</p>
-      <a href="../plano-plus.html" class="btn-assinar">Assinar</a>
+      <a href="plano-plus.html" class="btn-assinar">Assinar</a>
         </div>
 
 <div class="card">
             <h3>Plano Avançado</h3>
       <span class="price">R$350</span>
       <p>Treino personalizado, plano alimentar e suporte diário.</p>
-      <a href="../plano-avancado.html" class="btn-assinar">Assinar</a>
+      <a href="plano-avancado.html" class="btn-assinar">Assinar</a>
         </div>
 
 
